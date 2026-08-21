@@ -1,0 +1,24 @@
+# Center2 - Menus/CenterServerStatus.yml
+#
+# Shows the Center2 instances of the network.
+# The Paper servers come from the proxy and are placed into the free slots
+# automatically, so they are not listed here.
+# Slots are counted from 0, every slot may only be used once.
+
+config-version: 3
+
+title: "Server Status"
+rows: 6
+
+filler:
+  enabled: true
+  material: GRAY_STAINED_GLASS_PANE
+
+items:
+  velocity:
+    slot: 4
+    material: NETHER_STAR
+
+  back:
+    slot: 49
+    material: ARROW

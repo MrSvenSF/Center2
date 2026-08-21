@@ -1,0 +1,82 @@
+# ============================================================================
+# Center2 - .gitignore
+# ============================================================================
+
+# --- Maven ------------------------------------------------------------------
+target/
+**/target/
+
+# --- IDE --------------------------------------------------------------------
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+
+# --- Betriebssystem ---------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Logs / Temp ------------------------------------------------------------
+*.log
+logs/
+**/logs/
+
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# --- Lokale Archive / Backups ----------------------------------------------
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
+
+# --- Lokale AI-/Agent-Dateien ----------------------------------------------
+.claude/
+**/.claude/
+
+CLAUDE.md
+**/CLAUDE.md
+
+CLAUDE_REPORT.md
+**/CLAUDE_REPORT.md
+
+CODEX_REPORT.md
+**/CODEX_REPORT.md
+
+# --- Lokale Secrets / Zugangsdaten -----------------------------------------
+.env
+.env.*
+*.env
+
+server-access.local.env
+
+*.key
+*.pem
+*.p12
+*.pfx
+
+# --- Lokale Datenbanken -----------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+
+# --- Lokale Minecraft-Testumgebung -----------------------------------------
+Minecraft Testservers/
+Minecraft Testserver/
+Testserver/
+TestServer/
+testing/MinecraftTestNetwork/
+
+# --- Gebaute Artefakte ------------------------------------------------------
+Center2-*.jar
+Center2-TestModule-*.jar
+**/Center2-*.jar
+**/Center2-TestModule-*.jar

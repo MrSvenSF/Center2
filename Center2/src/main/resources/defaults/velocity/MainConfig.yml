@@ -1,0 +1,49 @@
+# Center2 - MainConfig.yml (Velocity)
+#
+# The proxy has no menu and no configurable commands, so it only uses this file,
+# Language/ and DB/Center.db. Commands, permissions and menus are configured on
+# the Paper servers.
+
+config-version: 3
+
+# Language of all Center2 texts. Available: DE, EN.
+language: DE
+
+# The optional remote database of the Center2 network.
+#
+# Center2 works completely without it. It only adds what plugin messages cannot
+# do, because a plugin message always needs a player to travel through: reaching
+# a server nobody is connected to.
+#
+# With "enabled: false" Center2 never opens a connection at all.
+remote:
+  # Whether this proxy takes part in the remote network.
+  enabled: false
+
+  # The name of this proxy inside the Center2 network, for example "velocity".
+  # You choose it, it is never derived from a host name, and every node needs its
+  # own. With "enabled: true" it must not be empty.
+  server-id: ""
+
+  # How to reach the shared MariaDB. Use the same database as the Paper servers.
+  # The user only needs rights on this one schema; SELECT, INSERT, UPDATE, DELETE
+  # and CREATE TABLE are enough.
+  database:
+    host: "127.0.0.1"
+    port: 3306
+    database: "center2"
+    username: "center2"
+    password: ""
+    # Encrypted connection. Only switch this off inside a network you control.
+    ssl: true
+
+  polling:
+    # How often this proxy looks for new network actions, in milliseconds.
+    interval-ms: 1000
+    # How long a network action stays valid, in seconds.
+    action-ttl-seconds: 60
+
+  heartbeat:
+    # How often this proxy reports that it is alive, in seconds. A node counts as
+    # offline once it missed three of these.
+    interval-seconds: 10

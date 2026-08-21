@@ -1,0 +1,58 @@
+# Center2 - MainConfig.yml
+#
+# Commands:    Commands.yml
+# Permissions: Permissions.yml
+# Menus:       Menus/
+# Texts:       Language/
+
+config-version: 3
+
+# Language of all Center2 texts. Available: DE, EN.
+language: DE
+
+menus:
+  # The Center-Info menu (Menus/CenterInfo.yml).
+  # false also sets "enabled: false" for the command "center-info" in
+  # Commands.yml. Setting it back to true does not switch that command on again.
+  center-info:
+    enabled: true
+
+# The optional remote database of the Center2 network.
+#
+# Center2 works completely without it: configuration, menus, commands, modules
+# and the local database DB/Center.db never need it. It only adds what plugin
+# messages cannot do, because a plugin message always needs a player to travel
+# through: reaching a server nobody is connected to.
+#
+# With "enabled: false" Center2 never opens a connection at all.
+remote:
+  # Whether this server takes part in the remote network.
+  enabled: false
+
+  # The name of this server inside the Center2 network, for example "lobby",
+  # "survival" or "citybuild". You choose it, it is never derived from a host
+  # name, and every node needs its own. With "enabled: true" it must not be empty.
+  server-id: ""
+
+  # How to reach the shared MariaDB. The user only needs rights on this one
+  # schema; SELECT, INSERT, UPDATE, DELETE and CREATE TABLE are enough.
+  database:
+    host: "127.0.0.1"
+    port: 3306
+    database: "center2"
+    username: "center2"
+    password: ""
+    # Encrypted connection. Only switch this off inside a network you control.
+    ssl: true
+
+  polling:
+    # How often this server looks for new network actions, in milliseconds.
+    interval-ms: 1000
+    # How long a network action stays valid, in seconds. A node that was offline
+    # for longer than this does not carry out an old action any more.
+    action-ttl-seconds: 60
+
+  heartbeat:
+    # How often this server reports that it is alive, in seconds. A node counts
+    # as offline once it missed three of these.
+    interval-seconds: 10

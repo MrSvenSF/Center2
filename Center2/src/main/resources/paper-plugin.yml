@@ -1,0 +1,8 @@
+name: Center2
+version: 0.4.0
+main: net.managerhub.center.paper.CenterPaperPlugin
+api-version: '1.21.11'
+description: Center2 - early development build for Paper and Velocity.
+website: https://managerhub.net
+authors:
+  - Manager Hub

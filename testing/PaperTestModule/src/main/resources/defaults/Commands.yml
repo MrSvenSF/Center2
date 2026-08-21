@@ -1,0 +1,7 @@
+config-version: 1
+
+commands:
+  test:
+    enabled: true
+    command: "center test"
+    aliases:

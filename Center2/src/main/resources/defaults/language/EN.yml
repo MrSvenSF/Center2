@@ -1,0 +1,187 @@
+# Center2 - Language/EN.yml
+#
+# Select the language in MainConfig.yml. DE.yml and EN.yml always have the same
+# keys. Chat texts support MiniMessage, {name} placeholders are filled in by
+# Center2. Messages Center2 writes before this file was read stay English.
+
+config-version: 3
+
+plugin:
+  enabled: "{product} {version} enabled on {platform}. Registered commands: {commands}."
+  enabled-proxy: "{product} {version} enabled on {platform}."
+  disabled: "{product} {version} disabled on {platform}."
+
+reload:
+  success: "<green>{product} reloaded. <gray>Registered commands: <white>{commands}"
+  failed: "<red>Reload failed: <white>{reason}"
+  previous-active: "<gray>The last working configuration is still active."
+  log-success: "{product} reloaded, {commands} commands are registered."
+  log-failed: "Reload of {product} failed: {reason}"
+  network:
+    transport-remote: "<gray>The network reload is going through the remote database."
+    transport-messaging: "<gray>The network reload is going through the proxy. A server without players is reached as soon as somebody connects there."
+    remote-down: "<yellow>The remote database is not reachable. The way through the proxy is used instead."
+    no-transport: "<yellow>{product} could not reach the network. This server was reloaded, the other servers were not."
+    header: "<gray>--- <white>{product} network reload <gray>---"
+    entry: "<gray>- <white>{node}<gray>: {status}"
+    failed: "<red>The network reload failed: <white>{reason}"
+    status:
+      success: "<green>done"
+      failed: "<red>failed"
+      pending: "<yellow>still open"
+      unreachable: "<red>not reachable"
+      expired: "<gray>expired"
+    received: "A network reload from '{origin}' arrived and is carried out here."
+    log-result: "Network reload of {product}: {result}"
+
+remote:
+  disabled: "The remote system of {product} was switched off in {file}."
+  invalid: "The remote system is switched on but not usable. {product} keeps running locally. {reason}"
+  connected: "The remote database {database} is connected. This node is '{server}'."
+  unreachable: "The remote database {database} is not reachable ({reason}). {product} keeps running locally and tries again in {seconds}s. Attempt {attempt}."
+  duplicate-id: "Another {product} node is already using the server-id '{server}'. The remote system is switched off on this node, because two nodes with one id cannot be told apart in the network. Give every node its own 'remote.server-id' in {file}. {product} keeps working locally."
+  purged: "The remote database dropped {rows} expired rows."
+  task-failed: "The remote task '{task}' of {product} failed."
+  action-rejected: "The network action '{action}' of '{namespace}' was not carried out: {reason}"
+  action-failed: "The network action '{action}' of '{namespace}' failed on this node."
+
+command:
+  no-permission: "<red>You do not have permission to use this command."
+  unknown: "<red>Unknown command. <gray>Use <white>/{path}<gray> for an overview."
+  overview-header: "<gray>--- <white>{product} {version} <gray>---"
+  overview-entry: "<white>/{path}<gray> - {description}"
+  overview-empty: "<gray>No commands are available for you."
+  description:
+    center-info: "open the {product} info menu"
+    reload: "reload the {product} configuration"
+    modules: "show every installed module"
+    modules-reload: "read the module folder again"
+    modules-enable: "start a module"
+    modules-disable: "stop a module"
+
+menu:
+  disabled: "<red>This {product} menu is switched off."
+  back:
+    name: "<white>Back"
+    lore: "Goes one level back."
+  center-info:
+    creator:
+      name: "<white>Creator"
+      player: "<white>{creator}"
+      description: "Creator and developer of {product}."
+    organization:
+      name: "<white>{organization}"
+      description-1: "{product} is a project by {organization}."
+      description-2: "More information: {website}"
+      open: "<white>Open website: <aqua>{website}"
+    admin:
+      lore: "Opens the admin menu."
+    close:
+      name: "<red>Close"
+      lore: "Closes this menu."
+  center-admin:
+    status:
+      name: "<white>Status"
+    server-status:
+      name: "<white>Server status"
+      lore: "Shows the {product} instances of the network."
+  modules:
+    entry:
+      name: "<white>{module}"
+      version: "Version: <white>{version}"
+      status: "Status: <white>{status}"
+      open: "Click for details."
+    empty:
+      name: "<white>No module installed"
+      lore: "Put a module jar into Modules/Jars."
+    too-many: "{installed} modules are installed, the admin menu shows {shown} of them. The remaining ones stay installed and are still available through the module command."
+  module:
+    title: "Module: {module}"
+    info:
+      name: "<white>{module}"
+      id: "Id: <white>{id}"
+      version: "Version: <white>{version}"
+      author: "Author: <white>{author}"
+      status: "Status: <white>{status}"
+      platform: "Platform: <white>{platform}"
+      center: "{product}: <white>{range}"
+      minecraft: "Minecraft: <white>{range}"
+    enable:
+      name: "<green>Enable"
+      lore: "Starts this module."
+    disable:
+      name: "<red>Disable"
+      lore: "Stops this module."
+  server-status:
+    velocity:
+      name: "<white>Proxy"
+    server:
+      name: "<white>{server}"
+    state:
+      line: "Status: <white>{state}"
+      connected: "connected"
+      unreachable: "not reachable"
+      unknown: "not verified yet"
+
+status:
+  header: "<gray>--- <white>{product} <gray>status ---"
+  line: "<gray>{label}: <white>{value}"
+  lore-line: "{label}: <white>{value}"
+  label:
+    version: "Version"
+    platform: "Platform"
+    minecraft: "Minecraft"
+    uptime: "Uptime"
+
+module:
+  loaded: "{installed} modules installed, {enabled} of them running."
+  skipped: "Module '{module}' was skipped: {reason}"
+  command-conflict: "The command path '{path}' of module '{module}' is already in use and was skipped."
+  error: "Module '{module}' (id {id}, version {version}) failed in step {step}: {reason}"
+  incompatible-center: "Module '{module}' (id {id}, version {version}) supports Center2 {required}, this is {running}. The module stays switched off."
+  incompatible-minecraft: "Module '{module}' (id {id}, version {version}) supports Minecraft {required}, this is {running}. The module stays switched off."
+  admin-disabled: "Module '{module}' (id {id}) stays switched off because an administrator switched it off."
+  reloaded: "{modules} running modules applied the new configuration."
+  jar-changed: "The jar '{file}' of module '{module}' (id {id}) was changed or removed. The module already loaded classes in this runtime, so exchanging it needs a server restart."
+  environment: "{product} checks modules against Minecraft {version}."
+  environment-unknown: "{product} could not determine the Minecraft version of this server (read: '{version}'). No module is loaded, because compatibility cannot be confirmed."
+  scan-failed: "The module folder '{directory}' could not be read: {reason}. It does not count as empty."
+  state-unreadable: "The stored module state could not be read: {reason}. No module is started automatically."
+  state-disable-not-stored: "Module '{module}' (id {id}) is switched off for this runtime, but the state could not be persisted: {reason}. A restart may start it again."
+  state-enable-not-stored: "Module '{module}' (id {id}) is switched on for this runtime, but the state could not be persisted: {reason}. A restart may switch it off again."
+  platform:
+    paper: "Paper"
+    velocity: "Velocity"
+    both: "Paper & Velocity"
+  status:
+    enabled: "Enabled"
+    disabled: "Disabled"
+    incompatible: "Not compatible"
+    error: "Module error"
+  reason:
+    center-version: "The {product} version is not supported."
+    minecraft-version: "The Minecraft version is not supported."
+
+modules:
+  list-header: "<gray>--- <white>{product} modules <gray>---"
+  list-entry: "<white>{module}<gray> ({id}) <gray>version <white>{version}<gray> - <white>{status}"
+  list-empty: "<gray>No module is installed."
+  usage: "<red>The module id is missing. <gray>Use <white>/{path} [module-id]"
+  unknown: "<red>There is no installed module with the id <white>{module}<red>."
+  enabled: "<green>Module <white>{module}<green> was started."
+  disabled: "<green>Module <white>{module}<green> was stopped."
+  already-enabled: "<gray>Module <white>{module}<gray> is already running."
+  already-disabled: "<gray>Module <white>{module}<gray> is already switched off."
+  incompatible: "<red>Module <white>{module}<red> is not compatible: <gray>{reason}"
+  error: "<red>Module <white>{module}<red>: module error. <gray>The details are in the server console."
+  unavailable: "<red>The {product} module system is not available. <gray>The cause is in the server console."
+  reloaded: "<green>Module folder read again. <gray>Installed: <white>{installed}<gray>, running: <white>{enabled}"
+
+registry:
+  name-taken: "The command '{command}' is already used by another plugin. It is only available as '{namespace}:{command}'."
+  remove-failed: "The command name '{command}' could not be removed from the server."
+  remove-leftovers: "The following old command names could not be removed: {commands}. A server restart removes them."
+
+commands-file:
+  disabled: "The menu '{menu}' is switched off in MainConfig.yml, so the command '{command}' was set to 'enabled: false' in {file}."
+  disable-failed: "The command '{command}' could not be set to 'enabled: false' in {file}: {reason}"
