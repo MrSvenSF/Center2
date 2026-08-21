@@ -9,12 +9,12 @@ mitbringen und kann den Proxy benutzen.
 ```properties
 id=MyProxyModule
 name=My Proxy Module
-version=1.0.0
+version=1.0.1
 author=Du
 main=com.example.myproxymodule.MyProxyModule
 platform=VELOCITY
-center-min-version=1.0.0
-center-max-version=1.0.0
+center-min-version=1.0.1
+center-max-version=1.0.1
 ```
 
 Kein Minecraft-Bereich: der Proxy hat keine einzelne Minecraft-Version, und

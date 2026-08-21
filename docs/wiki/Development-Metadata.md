@@ -82,12 +82,12 @@ Ein Paper-Modul:
 ```properties
 id=MeinModul
 name=Mein Modul
-version=1.0.0
+version=1.0.1
 author=Dein Name
 main=com.example.meinmodul.MeinModul
 platform=PAPER
-center-min-version=1.0.0
-center-max-version=1.0.0
+center-min-version=1.0.1
+center-max-version=1.0.1
 minecraft-min-version=1.21.4
 minecraft-max-version=1.21.11
 ```
@@ -97,12 +97,12 @@ Ein Proxy-Modul, ganz ohne Minecraft-Bereich:
 ```properties
 id=MeinProxyModul
 name=Mein Proxy Modul
-version=1.0.0
+version=1.0.1
 author=Dein Name
 main=com.example.proxy.MeinProxyModul
 platform=VELOCITY
-center-min-version=1.0.0
-center-max-version=1.0.0
+center-min-version=1.0.1
+center-max-version=1.0.1
 ```
 
 Ein Modul für beide Seiten:
@@ -110,12 +110,12 @@ Ein Modul für beide Seiten:
 ```properties
 id=MeinBothModul
 name=Mein BOTH Modul
-version=1.0.0
+version=1.0.1
 author=Müller
 main=com.example.both.MeinBothModul
 platform=BOTH
-center-min-version=1.0.0
-center-max-version=1.0.0
+center-min-version=1.0.1
+center-max-version=1.0.1
 minecraft-min-version=1.21.4
 minecraft-max-version=1.21.11
 ```

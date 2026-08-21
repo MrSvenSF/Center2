@@ -42,7 +42,7 @@ Die Konsole nennt den geforderten Bereich und die laufende Version:
 
 ```
 Modul 'Altes Modul' (ID AltesModul, Version 0.4.0) unterstützt MHCenter2 0.4.0 - 0.4.9,
-hier läuft 1.0.0. Das Modul bleibt deaktiviert.
+hier läuft 1.0.1. Das Modul bleibt deaktiviert.
 ```
 
 **Zu tun:** eine Modulversion besorgen, die zur installierten MHCenter2-Version
@@ -53,7 +53,7 @@ passt, oder die passende MHCenter2-Version verwenden. Danach Serverneustart.
 Nur auf Paper. Das Modul unterstützt die laufende Minecraft-Version nicht.
 
 ```
-Modul 'Future Modul' (ID FutureModul, Version 1.0.0) unterstützt Minecraft 1.22.0 - 1.22.9,
+Modul 'Future Modul' (ID FutureModul, Version 1.0.1) unterstützt Minecraft 1.22.0 - 1.22.9,
 hier läuft 1.21.11. Das Modul bleibt deaktiviert.
 ```
 
@@ -80,7 +80,7 @@ zum Verwalten da, nicht zum Debuggen.
 Die vollständige Ursache steht in der **Serverkonsole**:
 
 ```
-[MHCenter2] Modul 'Broken Test Module' (ID BrokenTestModule, Version 1.0.0)
+[MHCenter2] Modul 'Broken Test Module' (ID BrokenTestModule, Version 1.0.1)
 ist im Schritt ENABLE fehlgeschlagen: IllegalStateException: ...
 java.lang.IllegalStateException: ...
         at ...

@@ -4,7 +4,7 @@
 Beide Einstiegspunkte liegen in genau einer JAR: dieselbe Datei kommt in den
 `plugins`-Ordner des Paper-Servers **und** in den des Velocity-Proxys.
 
-**Aktueller Stand: 1.0.0**
+**Aktueller Stand: 1.0.1**
 
 ## Was MHCenter2 ist
 

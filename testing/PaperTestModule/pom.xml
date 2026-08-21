@@ -7,7 +7,7 @@
 
   <groupId>net.managerhub</groupId>
   <artifactId>mhcenter2-testmodule</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>jar</packaging>
 
   <name>MHCenter2 TestModule</name>
@@ -17,7 +17,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>25</maven.compiler.release>
 
-    <mhcenter2.version>1.0.0</mhcenter2.version>
+    <mhcenter2.version>1.0.1</mhcenter2.version>
     <paper.api.version>1.21.11-R0.1-SNAPSHOT</paper.api.version>
     <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
   </properties>

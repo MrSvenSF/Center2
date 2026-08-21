@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.0.1 – 22. August 2026
+
+Lizenz- und Dokumentationskorrektur ohne Funktionsänderung.
+
+- Apache-2.0-Lizenz von MHCenter2 wird jetzt auch in der fertigen JAR
+  mitgeliefert.
+- Lizenztexte und Versionshinweise für die eingebetteten JDBC-Treiber werden
+  unter `META-INF/licenses/` in der JAR mitgeliefert.
+- `THIRD-PARTY-NOTICES.md` trennt die Apache-2.0-Lizenz des eigenen Codes klar
+  von SQLite JDBC (Apache-2.0/BSD-2-Clause) und MariaDB Connector/J
+  (LGPL-2.1-or-later) und verweist auf den zugehörigen Quellcode.
+
 ## 1.0.0 – 21. August 2026
 
 Erste stabile Veröffentlichung von MHCenter2 für Paper und Velocity.

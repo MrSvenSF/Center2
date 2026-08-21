@@ -7,7 +7,7 @@
 
   <groupId>net.managerhub</groupId>
   <artifactId>mhcenter2</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>jar</packaging>
 
   <name>MHCenter2</name>
@@ -101,7 +101,21 @@
   </dependencies>
 
   <build>
-    <!-- Erzeugt genau eine veroeffentlichbare JAR: target/MHCenter2-1.0.0.jar -->
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+      <resource>
+        <directory>..</directory>
+        <targetPath>META-INF</targetPath>
+        <includes>
+          <include>LICENSE</include>
+          <include>THIRD-PARTY-NOTICES.md</include>
+        </includes>
+      </resource>
+    </resources>
+
+    <!-- Erzeugt genau eine veroeffentlichbare JAR: target/MHCenter2-1.0.1.jar -->
     <finalName>MHCenter2-${project.version}</finalName>
 
     <plugins>

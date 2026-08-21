@@ -33,7 +33,7 @@ Die öffentliche Beta verwendete noch den Namen `Center2`. Wer bestehende
 Konfigurationen oder Modulzustände übernehmen möchte, stoppt Paper und Velocity
 und benennt vor dem ersten Start der stabilen Version den Ordner
 `plugins/Center2/` in `plugins/MHCenter2/` um. Danach wird ausschließlich
-`MHCenter2-1.0.0.jar` verwendet; die alte Beta-JAR muss aus `plugins/`
+`MHCenter2-1.0.1.jar` verwendet; die alte Beta-JAR muss aus `plugins/`
 entfernt bleiben.
 
 ## Paper-Installation
@@ -139,7 +139,7 @@ neue Standardeinträge selbst und lässt bestehende Werte unverändert, siehe
 
 Fehlt in einer älteren `MainConfig.yml` der Abschnitt `remote`, ergänzt MHCenter2
 ihn mit `enabled: false`: Ein Update versucht nie von selbst, eine Datenbank zu
-benutzen, die niemand eingerichtet hat. Beim Wechsel auf 1.0.0 bleiben bereits
+benutzen, die niemand eingerichtet hat. Beim Wechsel auf 1.0.1 bleiben bereits
 vorhandene Einstellungen erhalten.
 
 ## Optional: die gemeinsame MariaDB

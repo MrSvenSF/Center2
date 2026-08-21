@@ -27,13 +27,13 @@ Damit liegt `net.managerhub:center:<version>` im lokalen Maven-Repository.
 
   <groupId>com.example</groupId>
   <artifactId>meinmodul</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>jar</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>25</maven.compiler.release>
-    <mhcenter2.version>1.0.0</mhcenter2.version>
+    <mhcenter2.version>1.0.1</mhcenter2.version>
   </properties>
 
   <dependencies>
@@ -105,12 +105,12 @@ Wichtig:
 ```properties
 id=MeinModul
 name=Mein Modul
-version=1.0.0
+version=1.0.1
 author=Dein Name
 main=com.example.meinmodul.MeinModul
 platform=PAPER
-center-min-version=1.0.0
-center-max-version=1.0.0
+center-min-version=1.0.1
+center-max-version=1.0.1
 minecraft-min-version=1.21.4
 minecraft-max-version=1.21.11
 ```
@@ -125,7 +125,7 @@ Die Datei muss **UTF-8** sein. Alle Felder erklärt
 mvn clean package
 ```
 
-Ergebnis: `target/MeinModul-1.0.0.jar`
+Ergebnis: `target/MeinModul-1.0.1.jar`
 
 Die JAR enthält nur deinen Code und `center-module.properties`, keine
 MHCenter2-Klasse.
@@ -158,7 +158,7 @@ Erwartete Ausgabe:
 
 ```
 --- MHCenter2 Module ---
-Mein Modul (MeinModul) Version 1.0.0 - Aktiviert
+Mein Modul (MeinModul) Version 1.0.1 - Aktiviert
 ```
 
 Und in der Konsole:

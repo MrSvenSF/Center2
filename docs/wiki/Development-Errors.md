@@ -61,7 +61,7 @@ mit dem Schritt `CLEANUP` geloggt und ersetzt nie den ursprünglichen Fehler.
 ## Was in der Konsole steht
 
 ```
-[MHCenter2] Modul 'Mein Modul' (ID MeinModul, Version 1.0.0) ist im Schritt ENABLE
+[MHCenter2] Modul 'Mein Modul' (ID MeinModul, Version 1.0.1) ist im Schritt ENABLE
 fehlgeschlagen: IllegalStateException: Datenbank nicht erreichbar
 java.lang.IllegalStateException: Datenbank nicht erreichbar
         at com.example.meinmodul.MeinModul.onEnable(MeinModul.java:42)

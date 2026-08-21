@@ -1,5 +1,5 @@
 name: MHCenter2
-version: 1.0.0
+version: 1.0.1
 main: net.managerhub.center.paper.CenterPaperPlugin
 api-version: '1.21.11'
 description: MHCenter2 server core for Paper and Velocity.

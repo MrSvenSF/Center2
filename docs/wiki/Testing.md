@@ -1,6 +1,7 @@
 # Teststand
 
-Diese Seite hält fest, was für MHCenter2 1.0.0 tatsächlich geprüft wurde. Sie
+Diese Seite hält fest, was für die MHCenter2-1.0-Reihe tatsächlich geprüft
+wurde. Sie
 trennt automatisierte Tests von echten Laufzeittests und vermeidet dadurch, aus
 einem erfolgreichen Build eine nicht geprüfte Produktionsgarantie abzuleiten.
 
@@ -39,6 +40,10 @@ Dieser Weg ist der Fallback ohne gemeinsame Datenbank und benötigt für die
 Für 1.0.0 lief eine echte MariaDB-11.8-Instanz in einem kurzlebigen
 Docker-Container. Paper, Paper2 und Velocity waren gleichzeitig als drei
 MHCenter2-Knoten verbunden.
+
+Version 1.0.1 enthält gegenüber diesem Laufzeitstand keine Funktionsänderung.
+Der Core wurde für 1.0.1 vollständig neu gebaut und automatisiert getestet; die
+Änderung betrifft Versionierung, Dokumentation und mitgelieferte Lizenztexte.
 
 Praktisch bestätigt wurden:
 

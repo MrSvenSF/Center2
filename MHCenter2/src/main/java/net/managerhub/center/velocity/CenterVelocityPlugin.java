@@ -59,7 +59,7 @@ import org.slf4j.Logger;
 @Plugin(
         id = "mhcenter2",
         name = "MHCenter2",
-        version = "1.0.0",
+        version = "1.0.1",
         description = "MHCenter2 server core for Paper and Velocity.",
         url = "https://managerhub.net",
         authors = {"Manager Hub"}

@@ -73,7 +73,7 @@ Listet jedes erkannte Modul mit Name, ID, Version und Zustand:
 
 ```
 --- MHCenter2 Module ---
-MHCenter2 TestModule (TestModule) Version 1.0.0 - Aktiviert
+MHCenter2 TestModule (TestModule) Version 1.0.1 - Aktiviert
 ```
 
 Die möglichen Zustände erklärt [Modulstatus](Modules-Status.md).

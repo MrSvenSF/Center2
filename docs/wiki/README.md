@@ -11,7 +11,7 @@ Beginne mit der [Startseite](Home.md) oder wähle ein Thema aus der
 |-------|------------|
 | `Home.md` | Startseite |
 | `_Sidebar.md` | vollständige Navigation |
-| `Testing.md` | nachprüfbarer Teststand von Version 1.0.0 |
+| `Testing.md` | nachprüfbarer Teststand von Version 1.0.1 |
 | alle übrigen `*.md` | die jeweilige Seite |
 
 Der Inhalt ist gegen den tatsächlichen Sourcecode geprüft: dokumentiert sind nur

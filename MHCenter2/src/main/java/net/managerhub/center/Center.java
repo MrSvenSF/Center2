@@ -12,7 +12,7 @@ public final class Center {
     public static final String PRODUCT_NAME = "MHCenter2";
 
     /** Product version. */
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "1.0.1";
 
     /** Organization behind MHCenter2. */
     public static final String ORGANIZATION = "Manager Hub";

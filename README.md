@@ -5,7 +5,7 @@ MHCenter2 ist ein gemeinsamer Minecraft-Server-Core für **Paper 1.21.11** und
 Konfiguration, Administration, Netzwerkkommunikation und eine öffentliche
 Modul-API bereit.
 
-> **Aktueller Stand:** 1.0.0 · Java 25 · Maven
+> **Aktueller Stand:** 1.0.1 · Java 25 · Maven
 >
 > **Transparenzhinweis:** MHCenter2 wurde mit Unterstützung künstlicher
 > Intelligenz entwickelt. Architektur, Auswahl, Prüfung, Tests und
@@ -38,7 +38,7 @@ Voraussetzungen:
 
 Installation auf Paper und Velocity:
 
-1. `MHCenter2-1.0.0.jar` in den jeweiligen Ordner `plugins/` legen.
+1. `MHCenter2-1.0.1.jar` in den jeweiligen Ordner `plugins/` legen.
 2. Server beziehungsweise Proxy einmal starten.
 3. Die erzeugte Konfiguration unter `plugins/MHCenter2/` prüfen.
 4. Nach Änderungen `/center reload` verwenden oder die Instanz neu starten.
@@ -72,10 +72,11 @@ hält Velocity die Action bis zum Join oder bis zum Ablauf ihrer Laufzeit im
 Arbeitsspeicher. MariaDB bleibt für garantierte Zustellung ohne Spieler und für
 atomaren gemeinsamen Storage der zuverlässige Weg.
 
-## Teststand von Version 1.0.0
+## Teststand der Version-1.0-Reihe
 
-Das lokale Testnetz mit Velocity und zwei Paper-Servern wurde praktisch
-geprüft. Menüs, Commands, Permissions, Modul-Lebenszyklus, Serverwechsel,
+Der funktional identische Stand 1.0.0 wurde im lokalen Testnetz mit Velocity
+und zwei Paper-Servern praktisch geprüft. Menüs, Commands, Permissions,
+Modul-Lebenszyklus, Serverwechsel,
 Plugin-Messaging für Modul-Actions und der netzwerkweite Reload funktionieren
 ohne aktivierte MariaDB.
 
@@ -85,6 +86,10 @@ netzwerkweite Reload war mit und ohne Spieler auf Paper, Paper2 und Velocity
 erfolgreich. Eine Modul-Action wurde ohne Spieler von Paper zu Paper2
 zugestellt; der gemeinsame Modul-Storage übergab dieselben Daten per
 `put()`/`take()` nachweislich genau einmal.
+
+Version 1.0.1 ändert ausschließlich Versionierung, Dokumentation und die in der
+JAR mitgelieferten Lizenztexte. Für 1.0.1 wurden der vollständige Core-Build
+und alle automatisierten Tests erneut ausgeführt.
 
 MariaDB bleibt optional. Ohne sie gelten weiterhin die oben beschriebenen
 Grenzen des Plugin-Messaging-Fallbacks.
@@ -161,7 +166,7 @@ cd ../VelocityTestModule
 mvn clean package
 ```
 
-Die Core-JAR entsteht unter `MHCenter2/target/MHCenter2-1.0.0.jar`. Paper- und
+Die Core-JAR entsteht unter `MHCenter2/target/MHCenter2-1.0.1.jar`. Paper- und
 Velocity-API werden nur zum Kompilieren verwendet; SQLite- und MariaDB-Treiber
 werden in die fertige Core-JAR eingebunden.
 
@@ -203,3 +208,10 @@ Zugangsdaten, Inventarinhalte oder andere sensible Serverdaten.
 
 Copyright 2026 Manager Hub. MHCenter2 ist unter der
 [Apache License 2.0](LICENSE) veröffentlicht.
+
+Die veröffentlichte JAR enthält außerdem SQLite JDBC (Apache-2.0 und
+BSD-2-Clause-Bestandteile) sowie MariaDB Connector/J
+(LGPL-2.1-or-later). Diese Bibliotheken behalten ihre eigenen Lizenzen. Die
+vollständigen Texte, Versionsangaben und Quellcodeverweise stehen in den
+[Drittanbieterhinweisen](THIRD-PARTY-NOTICES.md) und zusätzlich direkt unter
+`META-INF/` in der JAR.
