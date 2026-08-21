@@ -198,3 +198,8 @@ kostenpflichtigen GitHub-Wiki-Reiter.
 
 Bitte veröffentliche in Issues oder Logs niemals Datenbankpasswörter,
 Zugangsdaten, Inventarinhalte oder andere sensible Serverdaten.
+
+## Lizenz
+
+Copyright 2026 Manager Hub. MHCenter2 ist unter der
+[Apache License 2.0](LICENSE) veröffentlicht.
