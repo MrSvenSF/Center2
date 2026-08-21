@@ -23,6 +23,7 @@ class VersionTest {
     void readsVersionWithSuffix() {
         assertEquals("1.21.11", version("1.21.11-R0.1-SNAPSHOT").display());
         assertEquals("1.21.4", version(" 1.21.4-pre1 ").display());
+        assertEquals("1.0.0", version("1.0.0-beta.1").display());
     }
 
     @ParameterizedTest

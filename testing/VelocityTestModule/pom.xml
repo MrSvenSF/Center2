@@ -7,7 +7,7 @@
 
   <groupId>net.managerhub</groupId>
   <artifactId>center-velocitytestmodule</artifactId>
-  <version>0.4.0</version>
+  <version>1.0.0-beta.1</version>
   <packaging>jar</packaging>
 
   <name>Center2 Velocity TestModule</name>
@@ -17,7 +17,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>25</maven.compiler.release>
 
-    <center.version>0.4.0</center.version>
+    <center.version>1.0.0-beta.1</center.version>
     <velocity.api.version>3.5.0-SNAPSHOT</velocity.api.version>
     <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
     <maven.surefire.plugin.version>3.5.2</maven.surefire.plugin.version>

@@ -59,8 +59,8 @@ import org.slf4j.Logger;
 @Plugin(
         id = "center2",
         name = "Center2",
-        version = "0.4.0",
-        description = "Center2 - early development build for Paper and Velocity.",
+        version = "1.0.0-beta.1",
+        description = "Center2 beta for Paper and Velocity.",
         url = "https://managerhub.net",
         authors = {"Manager Hub"}
 )

@@ -7,7 +7,7 @@
 
   <groupId>net.managerhub</groupId>
   <artifactId>center</artifactId>
-  <version>0.4.0</version>
+  <version>1.0.0-beta.1</version>
   <packaging>jar</packaging>
 
   <name>Center2</name>
@@ -101,7 +101,7 @@
   </dependencies>
 
   <build>
-    <!-- Erzeugt genau eine veroeffentlichbare JAR: target/Center2-0.4.0.jar -->
+    <!-- Erzeugt genau eine veroeffentlichbare JAR: target/Center2-1.0.0-beta.1.jar -->
     <finalName>Center2-${project.version}</finalName>
 
     <plugins>

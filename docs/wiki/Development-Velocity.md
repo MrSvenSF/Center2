@@ -13,8 +13,8 @@ version=1.0.0
 author=Du
 main=com.example.myproxymodule.MyProxyModule
 platform=VELOCITY
-center-min-version=0.4.0
-center-max-version=0.4.99
+center-min-version=1.0.0
+center-max-version=1.0.0
 ```
 
 Kein Minecraft-Bereich: der Proxy hat keine einzelne Minecraft-Version, und

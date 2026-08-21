@@ -4,7 +4,7 @@
 Beide Einstiegspunkte liegen in genau einer JAR: dieselbe Datei kommt in den
 `plugins`-Ordner des Paper-Servers **und** in den des Velocity-Proxys.
 
-**Aktueller Stand: 0.4.0** (Vorbereitung auf V1)
+**Aktueller Stand: 1.0.0-beta.1**
 
 ## Was Center2 ist
 

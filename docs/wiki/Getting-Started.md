@@ -73,7 +73,7 @@ Listet jedes erkannte Modul mit Name, ID, Version und Zustand:
 
 ```
 --- Center2 Module ---
-Center2 TestModule (TestModule) Version 0.4.0 - Aktiviert
+Center2 TestModule (TestModule) Version 1.0.0-beta.1 - Aktiviert
 ```
 
 Die möglichen Zustände erklärt [Modulstatus](Modules-Status.md).

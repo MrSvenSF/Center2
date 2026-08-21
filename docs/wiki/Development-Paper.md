@@ -12,8 +12,8 @@ version=1.0.0
 author=Dein Name
 main=com.example.paper.MeinPaperModul
 platform=PAPER
-center-min-version=0.4.0
-center-max-version=0.4.99
+center-min-version=1.0.0
+center-max-version=1.0.0
 minecraft-min-version=1.21.4
 minecraft-max-version=1.21.11
 ```
@@ -36,7 +36,7 @@ Neben der Center2-API kommt die Paper-API dazu, beide `provided`:
     <dependency>
       <groupId>net.managerhub</groupId>
       <artifactId>center</artifactId>
-      <version>0.4.0</version>
+      <version>1.0.0-beta.1</version>
       <scope>provided</scope>
     </dependency>
     <dependency>

@@ -5,7 +5,7 @@ Center2 ist ein gemeinsamer Minecraft-Server-Core für **Paper 1.21.11** und
 Konfiguration, Administration, Netzwerkkommunikation und eine öffentliche
 Modul-API bereit.
 
-> **Aktueller Entwicklungsstand:** 0.4.0 · Java 25 · Maven
+> **Aktueller Stand:** 1.0.0-beta.1 · Java 25 · Maven
 >
 > **Transparenzhinweis:** Center2 wurde mit Unterstützung künstlicher
 > Intelligenz entwickelt. Architektur, Auswahl, Prüfung, Tests und
@@ -38,7 +38,7 @@ Voraussetzungen:
 
 Installation auf Paper und Velocity:
 
-1. `Center2-0.4.0.jar` in den jeweiligen Ordner `plugins/` legen.
+1. `Center2-1.0.0-beta.1.jar` in den jeweiligen Ordner `plugins/` legen.
 2. Server beziehungsweise Proxy einmal starten.
 3. Die erzeugte Konfiguration unter `plugins/Center2/` prüfen.
 4. Nach Änderungen `/center reload` verwenden oder die Instanz neu starten.
@@ -66,6 +66,19 @@ Center2 Plugin Messaging. Wartet ein Zielserver noch auf eine Spielerverbindung,
 hält Velocity die Action bis zum Join oder bis zum Ablauf ihrer Laufzeit im
 Arbeitsspeicher. MariaDB bleibt für garantierte Zustellung ohne Spieler und für
 atomaren gemeinsamen Storage der zuverlässige Weg.
+
+## Teststand der Beta
+
+Das lokale Testnetz mit Velocity und zwei Paper-Servern wurde praktisch
+geprüft. Menüs, Commands, Permissions, Modul-Lebenszyklus, Serverwechsel,
+Plugin-Messaging für Modul-Actions und der netzwerkweite Reload funktionieren
+ohne aktivierte MariaDB.
+
+Der MariaDB-Code ist durch automatisierte Tests abgedeckt, wurde bisher aber
+**noch nicht in einem echten Laufzeittest mit einer externen MariaDB geprüft**.
+Die Remote-Datenbank bleibt deshalb optional. Betreiber sollten sie vor dem
+produktiven Einsatz in ihrer eigenen Umgebung testen; ohne MariaDB gelten die
+oben beschriebenen Grenzen des Plugin-Messaging-Fallbacks.
 
 ## Commands und Permissions
 
@@ -139,7 +152,7 @@ cd ../VelocityTestModule
 mvn clean package
 ```
 
-Die Core-JAR entsteht unter `Center2/target/Center2-0.4.0.jar`. Paper- und
+Die Core-JAR entsteht unter `Center2/target/Center2-1.0.0-beta.1.jar`. Paper- und
 Velocity-API werden nur zum Kompilieren verwendet; SQLite- und MariaDB-Treiber
 werden in die fertige Core-JAR eingebunden.
 
@@ -150,6 +163,7 @@ Tests** geprüft. Beide Beispielmodule bauen ebenfalls erfolgreich.
 
 Die vollständige Dokumentation ist kostenlos direkt im Repository lesbar:
 
+- [Changelog](CHANGELOG.md)
 - [Dokumentationsübersicht](docs/wiki/README.md)
 - [Installation](docs/wiki/Installation.md) und
   [erste Schritte](docs/wiki/Getting-Started.md)

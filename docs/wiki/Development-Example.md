@@ -32,12 +32,12 @@ Metadaten:
 ```properties
 id=TestModule
 name=Center2 TestModule
-version=0.4.0
+version=1.0.0-beta.1
 author=Manager Hub
 main=net.managerhub.center.testmodule.TestModule
 platform=PAPER
-center-min-version=0.4.0
-center-max-version=0.4.99
+center-min-version=1.0.0
+center-max-version=1.0.0
 minecraft-min-version=1.21.4
 minecraft-max-version=1.21.11
 ```
@@ -149,12 +149,12 @@ Metadaten – ohne Minecraft-Bereich:
 ```properties
 id=VelocityTestModule
 name=Center2 Velocity TestModule
-version=0.4.0
+version=1.0.0-beta.1
 author=Manager Hub
 main=net.managerhub.center.velocitytestmodule.VelocityTestModule
 platform=VELOCITY
-center-min-version=0.4.0
-center-max-version=0.4.99
+center-min-version=1.0.0
+center-max-version=1.0.0
 ```
 
 Was es zeigt:

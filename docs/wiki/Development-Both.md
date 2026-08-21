@@ -5,8 +5,8 @@ wird auf beiden Seiten installiert und dort jeweils vollständig geladen.
 
 ```properties
 platform=BOTH
-center-min-version=0.4.0
-center-max-version=0.4.99
+center-min-version=1.0.0
+center-max-version=1.0.0
 minecraft-min-version=1.21.4
 minecraft-max-version=1.21.11
 ```

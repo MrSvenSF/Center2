@@ -6,8 +6,8 @@ innerhalb dieser Grenzen. Das ist eine Sicherheitsgrenze, kein Hinweis.
 ## Center2-Versionsbereich
 
 ```properties
-center-min-version=0.4.0
-center-max-version=0.4.99
+center-min-version=1.0.0
+center-max-version=1.0.0
 ```
 
 Pflicht für **jedes** Modul, auf beiden Plattformen. Center2 startet das Modul
@@ -81,8 +81,8 @@ eine neuere Minecraft- oder Center2-Version kann Breaking Changes enthalten.
 Wenn du weißt, dass dein Modul eine ganze Reihe unterstützt, sag es ausdrücklich:
 
 ```properties
-center-min-version=0.4.0
-center-max-version=0.4.99
+center-min-version=1.0.0
+center-max-version=1.0.0
 ```
 
 ## Was ein inkompatibles Modul erlebt

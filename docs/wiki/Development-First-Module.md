@@ -33,7 +33,7 @@ Damit liegt `net.managerhub:center:<version>` im lokalen Maven-Repository.
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>25</maven.compiler.release>
-    <center.version>0.4.0</center.version>
+    <center.version>1.0.0-beta.1</center.version>
   </properties>
 
   <dependencies>
@@ -109,8 +109,8 @@ version=1.0.0
 author=Dein Name
 main=com.example.meinmodul.MeinModul
 platform=PAPER
-center-min-version=0.4.0
-center-max-version=0.4.99
+center-min-version=1.0.0
+center-max-version=1.0.0
 minecraft-min-version=1.21.4
 minecraft-max-version=1.21.11
 ```

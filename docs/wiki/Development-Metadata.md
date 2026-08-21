@@ -86,8 +86,8 @@ version=1.0.0
 author=Dein Name
 main=com.example.meinmodul.MeinModul
 platform=PAPER
-center-min-version=0.4.0
-center-max-version=0.4.99
+center-min-version=1.0.0
+center-max-version=1.0.0
 minecraft-min-version=1.21.4
 minecraft-max-version=1.21.11
 ```
@@ -101,8 +101,8 @@ version=1.0.0
 author=Dein Name
 main=com.example.proxy.MeinProxyModul
 platform=VELOCITY
-center-min-version=0.4.0
-center-max-version=0.4.99
+center-min-version=1.0.0
+center-max-version=1.0.0
 ```
 
 Ein Modul für beide Seiten:
@@ -114,8 +114,8 @@ version=1.0.0
 author=Müller
 main=com.example.both.MeinBothModul
 platform=BOTH
-center-min-version=0.4.0
-center-max-version=0.4.99
+center-min-version=1.0.0
+center-max-version=1.0.0
 minecraft-min-version=1.21.4
 minecraft-max-version=1.21.11
 ```
