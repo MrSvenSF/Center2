@@ -1,4 +1,4 @@
-**[Center2](Home.md)**
+**[MHCenter2](Home.md)**
 
 **Serververwaltung**
 
@@ -8,6 +8,7 @@
 * [Permissions](Permissions.md)
 * [Netzwerk-Reload](Network-Reload.md)
 * [Remote-Datenbank](Network-Remote.md)
+* [Teststand](Testing.md)
 * [Sicherheit](Security.md)
 * [Module installieren](Modules-Installation.md)
 * [Modulstatus](Modules-Status.md)

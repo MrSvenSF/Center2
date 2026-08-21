@@ -139,8 +139,8 @@ hätte es sie. Mehr dazu unter [Netzwerk für Module](Development-Network.md).
 Ein BOTH-Modul kommt in **beide** Ordner:
 
 ```
-Paper:    plugins/Center2/Modules/Jars/MyModule.jar
-Velocity: plugins/Center2/Modules/Jars/MyModule.jar
+Paper:    plugins/MHCenter2/Modules/Jars/MyModule.jar
+Velocity: plugins/MHCenter2/Modules/Jars/MyModule.jar
 ```
 
 Beide Seiten laden es getrennt, mit eigener Instanz, eigenem Konfigurationsordner
@@ -149,7 +149,7 @@ schaltet es auf dem Proxy **nicht** ab.
 
 ## Bauen
 
-Das `pom.xml` braucht drei `provided`-Abhängigkeiten: die Center2-API, die
+Das `pom.xml` braucht drei `provided`-Abhängigkeiten: die MHCenter2-API, die
 Paper-API und die Velocity-API. Keine davon landet in deiner JAR.
 
 ## Siehe auch

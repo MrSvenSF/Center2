@@ -5,33 +5,33 @@
 * **Paper:** Serverkonsole und `logs/latest.log` im Serverordner.
 * **Velocity:** Proxykonsole und `logs/latest.log` im Proxyordner.
 
-Center2-Meldungen sind mit `[Center2]` (Paper) beziehungsweise `[center2]`
+MHCenter2-Meldungen sind mit `[MHCenter2]` (Paper) beziehungsweise `[mhcenter2]`
 (Velocity) markiert. Meldungen eines Moduls tragen zusätzlich die Modul-ID, zum
-Beispiel `[Center2] [TestModule] aktiviert.`
+Beispiel `[MHCenter2] [TestModule] aktiviert.`
 
 Im Minecraft-Menü stehen **nie** technische Details. Die Konsole ist die
 technische Wahrheit.
 
-## Center2 startet nicht
+## MHCenter2 startet nicht
 
-**Auf Paper** deaktiviert sich Center2 selbst und schreibt den Grund:
+**Auf Paper** deaktiviert sich MHCenter2 selbst und schreibt den Grund:
 
 ```
-Center2 could not start: <konkreter Grund>
-No commands and no menu are registered, Center2 is disabled now.
+MHCenter2 could not start: <konkreter Grund>
+No commands and no menu are registered, MHCenter2 is disabled now.
 ```
 
-**Auf Velocity** wird nur die Center2-Initialisierung abgebrochen, der Proxy
+**Auf Velocity** wird nur die MHCenter2-Initialisierung abgebrochen, der Proxy
 läuft weiter.
 
 Häufige Gründe:
 
 | Meldung enthält | Ursache | Lösung |
 |-----------------|---------|--------|
-| `config-version` | Eine Datei meldet eine unbekannte Schemaversion. | Bei einer neueren Version: passendes Center2 verwenden. |
+| `config-version` | Eine Datei meldet eine unbekannte Schemaversion. | Bei einer neueren Version: passendes MHCenter2 verwenden. |
 | `is missing or is not` | Ein Wert in einer YAML-Datei fehlt oder hat den falschen Typ. | Die genannte Datei und den genannten Pfad korrigieren. |
-| `the following texts are missing` | Die Sprachdatei ist unvollständig. | Fehlende Schlüssel ergänzen oder die Datei löschen, damit Center2 sie neu anlegt. |
-| `the following texts are unknown` | Die Sprachdatei enthält Schlüssel, die dieses Center2 nicht kennt. | Meist eine Sprachdatei aus einer neueren Version. |
+| `the following texts are missing` | Die Sprachdatei ist unvollständig. | Fehlende Schlüssel ergänzen oder die Datei löschen, damit MHCenter2 sie neu anlegt. |
+| `the following texts are unknown` | Die Sprachdatei enthält Schlüssel, die dieses MHCenter2 nicht kennt. | Meist eine Sprachdatei aus einer neueren Version. |
 | `SQLite database` | `DB/Center.db` konnte nicht geöffnet werden. | Schreibrechte und freien Speicher prüfen. |
 | `command path` | Zwei Commands beanspruchen denselben Pfad. | `Commands.yml` korrigieren. |
 
@@ -43,10 +43,10 @@ entsteht, bevor eine Sprachdatei gelesen werden konnte.
 Der Reihe nach prüfen:
 
 1. **Liegt die JAR am richtigen Ort?**
-   `plugins/Center2/Modules/Jars/`, nicht in `plugins/`.
+   `plugins/MHCenter2/Modules/Jars/`, nicht in `plugins/`.
 2. **Ist es die richtige Plattform?** Ein Paper-Modul erscheint auf dem Proxy
    nicht und umgekehrt, siehe [Paper- und Velocity-Module](Modules-Platforms.md).
-3. **Steht etwas in der Konsole?** Center2 meldet jede übersprungene JAR mit
+3. **Steht etwas in der Konsole?** MHCenter2 meldet jede übersprungene JAR mit
    Grund:
 
 ```
@@ -57,7 +57,7 @@ Typische Gründe:
 
 | Grund | Bedeutung |
 |-------|-----------|
-| `does not contain 'center-module.properties'` | Die JAR ist kein Center2-Modul. |
+| `does not contain 'center-module.properties'` | Die JAR ist kein MHCenter2-Modul. |
 | `is missing the entry '<name>'` | Ein Pflichtfeld der Metadaten fehlt. |
 | `duplicate module id '<id>' detected` | Eine zweite JAR beansprucht dieselbe Modul-ID. Das bereits installierte Modul bleibt unverändert, die neue JAR wird abgelehnt. |
 | `the module is built for PAPER and does not run on VELOCITY` | Falsche Plattform. |
@@ -68,9 +68,9 @@ Typische Gründe:
 
 ## INCOMPATIBLE_CENTER
 
-Das Modul unterstützt die laufende Center2-Version nicht. Die Konsole nennt den
+Das Modul unterstützt die laufende MHCenter2-Version nicht. Die Konsole nennt den
 geforderten Bereich und die laufende Version. Passende Modulversion besorgen oder
-passendes Center2 verwenden, dann Serverneustart. Siehe
+passendes MHCenter2 verwenden, dann Serverneustart. Siehe
 [Modulstatus](Modules-Status.md).
 
 ## INCOMPATIBLE_MINECRAFT
@@ -81,7 +81,7 @@ eine neuere Minecraft-Version gilt nicht automatisch als kompatibel.
 ## Modul Error
 
 Das Modul ist kompatibel, aber sein Code ist beim Laden, Starten oder Stoppen
-fehlgeschlagen. Center2 und alle anderen Module laufen weiter.
+fehlgeschlagen. MHCenter2 und alle anderen Module laufen weiter.
 
 Im Menü steht nur **Modul Error**. Die vollständige Ursache mit Modulname, ID,
 Version, Lebenszyklusschritt und Stacktrace steht in der Konsole. Damit den
@@ -99,22 +99,22 @@ Modulautor kontaktieren.
 
 ## Ein Command wird nicht vorgeschlagen
 
-Center2 schlägt nur vor, was der Absender auch benutzen darf. Fehlt die
+MHCenter2 schlägt nur vor, was der Absender auch benutzen darf. Fehlt die
 Berechtigung, fehlt der Vorschlag.
 
 Weitere Möglichkeiten:
 
 * Der Command steht in `Commands.yml` auf `enabled: false`.
-* Ein anderes Plugin besitzt bereits denselben Commandnamen. Dann meldet Center2:
+* Ein anderes Plugin besitzt bereits denselben Commandnamen. Dann meldet MHCenter2:
 
 ```
 Der Command 'center' wird bereits von einem anderen Plugin verwendet.
-Er ist nur als 'center2:center' erreichbar.
+Er ist nur als 'mhcenter2:center' erreichbar.
 ```
 
 ## Modul-JAR wurde zur Laufzeit ersetzt
 
-Center2 meldet:
+MHCenter2 meldet:
 
 ```
 Die JAR '<datei>.jar' von Modul '<name>' (ID <id>) wurde geändert oder entfernt.
@@ -138,11 +138,11 @@ Für ein Modulupdate: Server stoppen, JAR ersetzen, Server starten.
 | Konfiguration ändern | nein, `/center reload` reicht |
 | Bereits geladene Modul-JAR ersetzen | **ja** |
 | Modul-JAR löschen | **ja** |
-| Center2 selbst aktualisieren | **ja** |
+| MHCenter2 selbst aktualisieren | **ja** |
 
 ## Velocity-Modul liegt auf Paper (oder umgekehrt)
 
-Center2 lädt es nicht und schreibt in die Konsole, für welche Plattform es gebaut
+MHCenter2 lädt es nicht und schreibt in die Konsole, für welche Plattform es gebaut
 ist. Die JAR gehört in den `Modules/Jars`-Ordner der anderen Seite.
 
 Die Plattform eines Moduls steht in der Modul-Detailansicht des Paper-Admin-Menüs
@@ -155,7 +155,7 @@ Der Modulordner 'Modules/Jars' konnte nicht gelesen werden: <Grund>.
 Er gilt deshalb nicht als leer.
 ```
 
-Center2 unterscheidet bewusst zwischen „gelesen, keine Module" und „konnte nicht
+MHCenter2 unterscheidet bewusst zwischen „gelesen, keine Module" und „konnte nicht
 gelesen werden". Im zweiten Fall wird der Durchlauf abgebrochen und **kein**
 bekanntes Modul vergessen.
 
@@ -177,11 +177,11 @@ Speicherplatz prüfen.
 ## Der Netzwerk-Reload erreicht andere Server nicht
 
 ```
-Center2 konnte das Netzwerk nicht erreichen. Dieser Server wurde neu geladen,
+MHCenter2 konnte das Netzwerk nicht erreichen. Dieser Server wurde neu geladen,
 andere Server nicht.
 ```
 
-Ohne Remote-Datenbank reist eine Center2-Nachricht durch einen Spieler. Ist auf
+Ohne Remote-Datenbank reist eine MHCenter2-Nachricht durch einen Spieler. Ist auf
 dem Server, auf dem du `/center reload` tippst, niemand online, gibt es keinen
 Weg zum Proxy.
 
@@ -206,11 +206,11 @@ nichts mehr gemeldet.
 ## Die Remote-Datenbank ist nicht erreichbar
 
 ```
-Die Remote-Datenbank <host>:<port>/<db> ist nicht erreichbar (<Grund>). Center2
+Die Remote-Datenbank <host>:<port>/<db> ist nicht erreichbar (<Grund>). MHCenter2
 läuft lokal weiter und versucht es in <n>s erneut. Versuch <n>.
 ```
 
-Center2 bleibt aktiv, die lokale Datenbank, die Module und alle Commands laufen
+MHCenter2 bleibt aktiv, die lokale Datenbank, die Module und alle Commands laufen
 normal weiter. Der Knoten versucht es mit wachsender Pause erneut und meldet
 sich, sobald es wieder klappt.
 
@@ -221,22 +221,22 @@ verbinden? Passt die SSL-Einstellung zum Zertifikat der Datenbank?
 ## Das Remote-System startet gar nicht
 
 ```
-Das Remote-System ist eingeschaltet, aber nicht verwendbar. Center2 läuft
+Das Remote-System ist eingeschaltet, aber nicht verwendbar. MHCenter2 läuft
 weiterhin lokal. 'remote.server-id' ist leer. ...
 ```
 
 Der Abschnitt `remote` ist unvollständig. Die Meldung nennt **jeden** fehlenden
-Wert, nicht nur den ersten. Center2 verbindet sich in diesem Fall bewusst gar
+Wert, nicht nur den ersten. MHCenter2 verbindet sich in diesem Fall bewusst gar
 nicht: ein halb konfigurierter Knoten wäre schlimmer als ein rein lokaler.
 
 ## Zwei Knoten mit derselben server-id
 
 ```
-Ein anderer Center2-Knoten verwendet bereits die server-id '<id>'. Das
+Ein anderer MHCenter2-Knoten verwendet bereits die server-id '<id>'. Das
 Remote-System wird auf diesem Knoten abgeschaltet ...
 ```
 
-Zwei Knoten mit einer ID sind im Netzwerk nicht unterscheidbar. Center2 schaltet
+Zwei Knoten mit einer ID sind im Netzwerk nicht unterscheidbar. MHCenter2 schaltet
 das Remote-System auf dem zweiten Knoten ab; lokal läuft er normal weiter.
 
 **Zu tun:** in `MainConfig.yml` eine eigene `remote.server-id` vergeben und den
@@ -250,7 +250,7 @@ module 'TestModule'. ...
 ```
 
 Ein Core-Command oder ein Alias sollte einen Pfad bekommen, den ein laufendes
-Modul bereits bedient. Center2 lehnt die neue Command-Konfiguration ab, statt den
+Modul bereits bedient. MHCenter2 lehnt die neue Command-Konfiguration ab, statt den
 Modulcommand kommentarlos verschwinden zu lassen. Die zuletzt gültige
 Konfiguration bleibt aktiv.
 

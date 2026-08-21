@@ -1,7 +1,7 @@
 # Reload
 
 Ein Modul darf seine Konfiguration ändern, ohne dass der Server neu startet.
-Center2 sagt ihm dafür Bescheid.
+MHCenter2 sagt ihm dafür Bescheid.
 
 ## `onReload()`
 
@@ -23,7 +23,7 @@ public interface CenterModule {
 nichts nachzulesen hat, lässt die Methode einfach weg – bestehende Module
 brechen dadurch nicht.
 
-Center2 ruft sie auf **jedem laufenden Modul** auf, wenn ein Administrator
+MHCenter2 ruft sie auf **jedem laufenden Modul** auf, wenn ein Administrator
 `/center reload` benutzt. Das gilt auf **PAPER**, auf **VELOCITY** und für
 **BOTH**-Module, und es gilt auch dann, wenn der Reload von einem anderen Server
 im Netzwerk kam.
@@ -73,7 +73,7 @@ public final class MyModule implements CenterModule {
 
 ## Was du dort nicht tust
 
-**Keine Commands neu registrieren.** Deine Commands bleiben registriert; Center2
+**Keine Commands neu registrieren.** Deine Commands bleiben registriert; MHCenter2
 räumt sie nur auf, wenn das Modul gestoppt wird. Registrierst du denselben Pfad
 im Reload erneut, wird er abgelehnt, weil er bereits vergeben ist.
 
@@ -88,13 +88,13 @@ Neuladen des Binärcodes. Der ClassLoader deines Moduls bleibt derselbe, die
 laufende Instanz bleibt dieselbe, `onLoad` und `onEnable` laufen nicht noch
 einmal.
 
-Hast du deine Modul-JAR ausgetauscht, hilft nur ein **Serverneustart**. Center2
+Hast du deine Modul-JAR ausgetauscht, hilft nur ein **Serverneustart**. MHCenter2
 erkennt das und schreibt es ins Log; es tut nicht so, als hätte der Reload die
 neue Version geladen.
 
 ## Wenn `onReload()` fehlschlägt
 
-Wirft deine Methode, dann weiß Center2 nicht mehr, welchen Teil deiner
+Wirft deine Methode, dann weiß MHCenter2 nicht mehr, welchen Teil deiner
 Konfiguration du schon angewendet hast. Ein Modul in einem unbekannten Zustand
 ist schlechter als ein abgeschaltetes Modul, deshalb:
 
@@ -109,7 +109,7 @@ hast, startest du es mit `/center modules enable <id>` wieder.
 
 `/center reload` macht in dieser Reihenfolge:
 
-1. alle Center2-Konfigurationsdateien laden und prüfen,
+1. alle MHCenter2-Konfigurationsdateien laden und prüfen,
 2. die neue Konfiguration aktivieren (Commands, Permissions, Texte, Menüs),
 3. die Remote-Einstellungen anwenden,
 4. `onReload()` auf allen laufenden Modulen,
@@ -121,7 +121,7 @@ geht ins Netzwerk.
 ## Modulcommand gegen Core-Command
 
 Wenn du in `Commands.yml` einen Core-Command oder einen Alias auf einen Pfad
-legst, den ein laufendes Modul schon bedient, lehnt Center2 die neue
+legst, den ein laufendes Modul schon bedient, lehnt MHCenter2 die neue
 Command-Konfiguration ab. Der Reload schlägt mit einer klaren Meldung fehl und
 der letzte gültige Commandstand bleibt aktiv.
 

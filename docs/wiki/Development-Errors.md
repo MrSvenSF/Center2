@@ -2,7 +2,7 @@
 
 ## Fehlerisolation
 
-Ein Modul, das eine Ausnahme wirft, reißt weder Center2 noch ein anderes Modul
+Ein Modul, das eine Ausnahme wirft, reißt weder MHCenter2 noch ein anderes Modul
 mit. Es bekommt den Zustand `ERROR`, läuft nicht weiter, und alles andere läuft
 normal weiter.
 
@@ -61,7 +61,7 @@ mit dem Schritt `CLEANUP` geloggt und ersetzt nie den ursprünglichen Fehler.
 ## Was in der Konsole steht
 
 ```
-[Center2] Modul 'Mein Modul' (ID MeinModul, Version 1.0.0) ist im Schritt ENABLE
+[MHCenter2] Modul 'Mein Modul' (ID MeinModul, Version 1.0.0) ist im Schritt ENABLE
 fehlgeschlagen: IllegalStateException: Datenbank nicht erreichbar
 java.lang.IllegalStateException: Datenbank nicht erreichbar
         at com.example.meinmodul.MeinModul.onEnable(MeinModul.java:42)
@@ -76,7 +76,7 @@ Mögliche Schritte: `LOAD`, `ENABLE`, `RELOAD`, `DISABLE`,
 
 ## Fehler in onReload
 
-Wirft `onReload()`, weiß Center2 nicht mehr, welchen Teil deiner Konfiguration du
+Wirft `onReload()`, weiß MHCenter2 nicht mehr, welchen Teil deiner Konfiguration du
 schon angewendet hast. Ein Modul in einem unbekannten Zustand ist schlechter als
 ein abgeschaltetes, deshalb:
 
@@ -106,7 +106,7 @@ Die Konsole enthält die technische Wahrheit.
 
 Ein Modul in `ERROR` lässt sich erneut aktivieren. Das ist ein kontrollierter
 neuer Versuch mit einer frischen Instanz. Tritt derselbe Fehler wieder auf, bleibt
-es bei `ERROR`, und der Fehler wird erneut sauber geloggt. Center2 wiederholt das
+es bei `ERROR`, und der Fehler wird erneut sauber geloggt. MHCenter2 wiederholt das
 nicht von allein.
 
 ## Empfehlungen für Modulautoren
@@ -122,7 +122,7 @@ try {
 }
 ```
 
-Besser: entweder weiterwerfen, damit Center2 das Modul sauber in `ERROR` schickt,
+Besser: entweder weiterwerfen, damit MHCenter2 das Modul sauber in `ERROR` schickt,
 
 ```java
 @Override
@@ -144,7 +144,7 @@ try {
 Faustregel:
 
 * **Das Modul kann ohne diesen Teil nicht sinnvoll arbeiten** → Ausnahme
-  weiterwerfen, Center2 setzt `ERROR`.
+  weiterwerfen, MHCenter2 setzt `ERROR`.
 * **Der Teil ist optional** → fangen, mit `logger().error(...)` melden und
   weiterlaufen.
 
@@ -156,10 +156,10 @@ Nutze für eigene Meldungen `context.logger()`:
 | `warn(String)` | etwas, das ein Administrator ansehen sollte |
 | `error(String, Throwable)` | Fehler mit Ursache; der Stacktrace landet im Log |
 
-Center2 stellt jeder Zeile automatisch `[<modul-id>]` voran.
+MHCenter2 stellt jeder Zeile automatisch `[<modul-id>]` voran.
 
 ## Ein Modul entscheidet nicht selbst, dass es aktiv ist
 
-Center2 kontrolliert Laden, Aktivieren, Deaktivieren und den Fehlerzustand. Melde
+MHCenter2 kontrolliert Laden, Aktivieren, Deaktivieren und den Fehlerzustand. Melde
 also nicht in `onEnable` „erfolgreich aktiviert", bevor die Methode durch ist:
 wirft sie danach noch, ist das Modul in `ERROR`, und deine Meldung war falsch.

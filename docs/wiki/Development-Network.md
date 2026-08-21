@@ -1,6 +1,6 @@
 # Netzwerk für Module
 
-Jedes Modul bekommt Zugriff auf das Center2-Netzwerk. Actions bevorzugen die
+Jedes Modul bekommt Zugriff auf das MHCenter2-Netzwerk. Actions bevorzugen die
 optionale MariaDB und verwenden sonst Plugin Messaging als begrenzten zweiten
 Weg. Der gemeinsame Storage bleibt ausschließlich MariaDB.
 
@@ -21,7 +21,7 @@ if (!network.available()) {
 einen Online-Spieler geantwortet hat. `network.storage().available()` ist nur
 bei erreichbarer MariaDB `true`.
 
-> **In `onEnable()` ist die Antwort meistens noch `false`.** Center2 verbindet
+> **In `onEnable()` ist die Antwort meistens noch `false`.** MHCenter2 verbindet
 > sich im Hintergrund, der erste Heartbeat kommt erst danach. Frage `available()`
 > also dort, wo du das Netzwerk wirklich brauchst, nicht einmal beim Start.
 > Genauso kann die Antwort später wieder `false` werden, wenn die Datenbank
@@ -47,7 +47,7 @@ public interface ModuleStorage {
 
 * **Namensraum:** deine Modul-ID. Ein anderes Modul kann deine Einträge weder
   lesen noch überschreiben.
-* **Payload:** ein Block Bytes. Center2 schaut nicht hinein – ein serialisiertes
+* **Payload:** ein Block Bytes. MHCenter2 schaut nicht hinein – ein serialisiertes
   Inventar, ein kleines JSON, was auch immer dein Modul versteht. Höchstens
   8 MiB.
 * **Schlüssel:** bis zu 190 Zeichen.
@@ -69,7 +69,7 @@ dupliziert".
 ### Kein lokaler Fallback
 
 Wenn die Remote-Datenbank nicht verfügbar ist, wirft **jede** Methode eine
-`ModuleRemoteException`. Center2 schreibt Remote-Daten **niemals** in die lokale
+`ModuleRemoteException`. MHCenter2 schreibt Remote-Daten **niemals** in die lokale
 `DB/Center.db`.
 
 Das ist Absicht, kein fehlendes Feature: Daten, die zwischen Servern reisen
@@ -115,21 +115,21 @@ network.onAction(action -> {
   einem Neustart. Der Plugin-Messaging-Fallback sperrt Duplikate nur im Speicher.
   Ist am Ziel noch kein Spieler, hält Velocity die Action bis zum nächsten Join
   oder bis zum Ablauf ihrer Laufzeit im Arbeitsspeicher bereit.
-* Ein Listener pro Modul; ein zweiter Aufruf ersetzt den ersten. Center2 entfernt
+* Ein Listener pro Modul; ein zweiter Aufruf ersetzt den ersten. MHCenter2 entfernt
   ihn, wenn das Modul stoppt.
 
-Der Listener läuft im Hintergrund-Thread von Center2. Alles, was die Spielwelt
+Der Listener läuft im Hintergrund-Thread von MHCenter2. Alles, was die Spielwelt
 anfasst, gibst du selbst an den Scheduler deiner Plattform weiter.
 
 ### Eine Action ist kein Befehl
 
-Center2 führt niemals einen Text aus der Datenbank als Konsolenbefehl aus. Was
+MHCenter2 führt niemals einen Text aus der Datenbank als Konsolenbefehl aus. Was
 mit deiner Action passiert, entscheidet ausschließlich dein eigener Code in
 deinem Listener. Details unter [Sicherheit](Security.md).
 
 ## Beispiel: Inventory-Sync
 
-Center2 baut **kein** Inventory-Sync-Modul. Es macht nur möglich, dass jemand
+MHCenter2 baut **kein** Inventory-Sync-Modul. Es macht nur möglich, dass jemand
 anderes eines schreibt. So sähe der Ablauf aus:
 
 ```

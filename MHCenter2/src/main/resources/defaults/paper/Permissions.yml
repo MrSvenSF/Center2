@@ -1,0 +1,48 @@
+# MHCenter2 - Permissions.yml
+#
+# permission  the permission node, granted with your permission plugin
+# op          true  = server operators may use it without the permission
+#             false = the permission itself is required, being OP is not enough
+#
+# admin-all is the master permission: it alone covers every MHCenter2 admin
+# function. Every other entry only counts together with 'admin', and a module
+# action additionally only together with 'modules'. A single sub permission never
+# opens the general admin barrier on its own.
+
+config-version: 3
+
+permissions:
+  # Master permission for the whole MHCenter2 admin area.
+  admin-all:
+    permission: "center.admin.*"
+    op: false
+
+  # Admin button, admin menu and server status.
+  admin:
+    permission: "center.admin"
+    op: false
+
+  # /center reload
+  reload:
+    permission: "center.admin.reload"
+    op: false
+
+  # Module overview, module area of the admin menu and the module detail view.
+  modules:
+    permission: "center.admin.modules"
+    op: false
+
+  # The module reload command.
+  modules-reload:
+    permission: "center.admin.modules.reload"
+    op: false
+
+  # The module enable command and the enable button.
+  modules-enable:
+    permission: "center.admin.modules.enable"
+    op: false
+
+  # The module disable command and the disable button.
+  modules-disable:
+    permission: "center.admin.modules.disable"
+    op: false

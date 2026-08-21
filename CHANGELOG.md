@@ -1,8 +1,34 @@
 # Changelog
 
+## 1.0.0 – 21. August 2026
+
+Erste stabile Veröffentlichung von MHCenter2 für Paper und Velocity.
+
+### Neuer Projektname
+
+- Das Projekt, das Plugin, die gemeinsame JAR und der GitHub-Auftritt heißen
+  ab dieser stabilen Version **MHCenter2**.
+- Technische Modul-API-Pakete sowie die bekannten `/center`-Befehle und
+  `center.admin.*`-Permissions bleiben absichtlich kompatibel.
+- Beim Wechsel von `1.0.0-beta.1` muss der bisherige Datenordner
+  `plugins/Center2/` vor dem ersten Start in `plugins/MHCenter2/` umbenannt
+  werden.
+
+### Gegenüber der Beta zusätzlich geprüft
+
+- echte MariaDB-11.8-Instanz in Docker mit Paper, Paper2 und Velocity,
+- Heartbeats und gleichzeitige Verbindung aller drei MHCenter2-Knoten,
+- netzwerkweiter Reload über MariaDB mit und ohne verbundenen Spieler,
+- Modul-Action von Paper zu Paper2 über MariaDB ohne Spieler,
+- gemeinsamer Modul-Storage mit `put()` und atomarem `take()` genau einmal,
+- Datenbanktabellen, Action-Quittung und Entfernung verbrauchter Übergabedaten.
+
+MariaDB bleibt optional. Ohne MariaDB verwendet MHCenter2 für Reloads und
+Modul-Actions weiterhin den dokumentierten Plugin-Messaging-Fallback.
+
 ## 1.0.0-beta.1 – 21. August 2026
 
-Erste öffentliche Beta von Center2 für Paper und Velocity.
+Erste öffentliche Beta von MHCenter2 für Paper und Velocity.
 
 ### Enthalten
 

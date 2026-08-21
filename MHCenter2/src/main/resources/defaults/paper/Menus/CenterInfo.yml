@@ -1,0 +1,32 @@
+# MHCenter2 - Menus/CenterInfo.yml
+#
+# Slots are counted from 0, every slot may only be used once.
+# Texts support MiniMessage, for example "<red>Admin".
+# Switch this menu on and off in MainConfig.yml.
+
+config-version: 3
+
+title: "MHCenter2"
+rows: 3
+
+filler:
+  enabled: true
+  material: GRAY_STAINED_GLASS_PANE
+
+items:
+  # Creator and organization are fixed, only the slot can be changed.
+  creator:
+    slot: 12
+
+  organization:
+    slot: 14
+
+  # Only visible with the admin permission from Permissions.yml.
+  admin:
+    slot: 26
+    material: REDSTONE
+    name: "<red>Admin"
+
+  close:
+    slot: 22
+    material: BARRIER

@@ -18,7 +18,7 @@ center-max-version=1.0.0
 ```
 
 Kein Minecraft-Bereich: der Proxy hat keine einzelne Minecraft-Version, und
-Center2 erfindet auch keine. Siehe [Metadaten](Development-Metadata.md).
+MHCenter2 erfindet auch keine. Siehe [Metadaten](Development-Metadata.md).
 
 ## Was ein Proxy-Modul typischerweise ist
 
@@ -96,7 +96,7 @@ Auch ein Listener-Objekt mit `@Subscribe`-Methoden geht:
 proxy.subscribe(new MyListener());
 ```
 
-**Center2 meldet jede dieser Registrierungen wieder ab, wenn das Modul stoppt.**
+**MHCenter2 meldet jede dieser Registrierungen wieder ab, wenn das Modul stoppt.**
 Du brauchst dafür kein eigenes Cleanup.
 
 ## Serverlisten-Ping und MOTD
@@ -119,7 +119,7 @@ proxy.subscribe(ProxyPingEvent.class, event -> {
 });
 ```
 
-Center2 selbst bringt **kein** MOTD-Modul mit. Es sorgt nur dafür, dass du eines
+MHCenter2 selbst bringt **kein** MOTD-Modul mit. Es sorgt nur dafür, dass du eines
 schreiben kannst.
 
 ## Scheduler
@@ -133,7 +133,7 @@ final VelocityModuleApi.ProxyTask task =
 * `repeat` ist die Wiederholung, `Duration.ZERO` heißt einmalig.
 * `task.cancel()` beendet ihn früher, `task.active()` fragt den Zustand ab.
 
-Auch hier gilt: **Center2 bricht den Task ab, wenn das Modul stoppt.**
+Auch hier gilt: **MHCenter2 bricht den Task ab, wenn das Modul stoppt.**
 
 ## Server des Netzwerks
 
@@ -157,17 +157,17 @@ context.registerCommand("center proxytest",
 
 Der Rückgabewert ist ehrlich: `false` bedeutet, dass der Pfad zum Core gehört,
 schon von einem anderen Modul benutzt wird oder dass der Commandname bereits
-einem anderen Plugin des Proxys gehört. Center2 prüft das gegen den
+einem anderen Plugin des Proxys gehört. MHCenter2 prüft das gegen den
 `CommandManager` von Velocity, bevor es zusagt. Der Grund steht im Log.
 
-Center2 entfernt Modulcommands beim Stoppen selbst.
+MHCenter2 entfernt Modulcommands beim Stoppen selbst.
 
 ## `proxy()` – und die Verantwortung dafür
 
 `proxy()` gibt dir den laufenden `ProxyServer`. Damit geht alles, was Velocity
 kann.
 
-Aber: was du **direkt** dort registrierst, kennt Center2 nicht und räumt es auch
+Aber: was du **direkt** dort registrierst, kennt MHCenter2 nicht und räumt es auch
 nicht auf. Dafür musst du selbst sorgen:
 
 ```java
@@ -175,7 +175,7 @@ proxy.proxy().getEventManager().register(plugin, listener);
 context.registerCleanup(() -> proxy.proxy().getEventManager().unregisterListener(plugin, listener));
 ```
 
-Einfacher ist es, `subscribe(...)` und `schedule(...)` von Center2 zu benutzen.
+Einfacher ist es, `subscribe(...)` und `schedule(...)` von MHCenter2 zu benutzen.
 
 ## Netzwerk
 
@@ -212,7 +212,7 @@ public final class VelocityTestModule implements CenterModule {
     @Override
     public void onEnable() {
         final boolean accepted = context.registerCommand("center proxytest",
-                sender -> sender.sendMessage("<green>Center2 Velocity TestModule funktioniert."
+                sender -> sender.sendMessage("<green>MHCenter2 Velocity TestModule funktioniert."
                         + " <gray>Aufgerufen von <white>" + sender.name()));
         context.logger().info("Command angenommen: " + accepted + ".");
 
@@ -247,7 +247,7 @@ public final class VelocityTestModule implements CenterModule {
 }
 ```
 
-Das `pom.xml` braucht dafür zwei `provided`-Abhängigkeiten: die Center2-API und
+Das `pom.xml` braucht dafür zwei `provided`-Abhängigkeiten: die MHCenter2-API und
 die Velocity-API.
 
 ## Verwalten
@@ -265,7 +265,7 @@ Die Permissions sind fest eingebaut (`center.admin`, `center.admin.modules`,
 …), weil der Proxy keine `Permissions.yml` hat.
 
 > Verlass dich für die Netzwerkverwaltung nicht auf Proxy-Commands. Kein
-> Center2-Feature setzt voraus, dass sie funktionieren.
+> MHCenter2-Feature setzt voraus, dass sie funktionieren.
 
 ## Siehe auch
 

@@ -1,7 +1,7 @@
 # Paper- und Velocity-Module
 
-Center2 ist ein gemeinsames System für Paper und Velocity, und das gilt auch für
-Module. **Velocity-Module sind vollwertige Center2-Module**, keine Randnotiz.
+MHCenter2 ist ein gemeinsames System für Paper und Velocity, und das gilt auch für
+Module. **Velocity-Module sind vollwertige MHCenter2-Module**, keine Randnotiz.
 
 Jedes Modul gibt in seinen Metadaten an, wofür es gebaut ist:
 
@@ -40,7 +40,7 @@ Velocity denselben Lebenszyklus.
 Ein `BOTH`-Modul muss einen Minecraft-Bereich angeben, weil es auch auf Paper
 laufen kann. Auf Velocity wird dieser Bereich ignoriert.
 
-Wichtig: `BOTH` heißt nicht, dass Center2 Paper-Code auf Velocity lauffähig
+Wichtig: `BOTH` heißt nicht, dass MHCenter2 Paper-Code auf Velocity lauffähig
 macht. Der Modulautor muss plattformspezifischen Code sauber trennen, siehe
 [BOTH-Module](Development-Both.md).
 
@@ -54,7 +54,7 @@ Ein Velocity-Modul kann alles, was ein Paper-Modul kann:
 | Metadaten lesen und prüfen | ja | ja |
 | Modul-ID und doppelte IDs prüfen | ja | ja |
 | Plattform prüfen | ja | ja |
-| Center2-Versionsbereich prüfen | ja | ja |
+| MHCenter2-Versionsbereich prüfen | ja | ja |
 | Minecraft-Versionsbereich prüfen | ja | nein, siehe unten |
 | `onLoad`, `onEnable`, `onReload`, `onDisable` | ja | ja |
 | eigene Commands registrieren | ja | ja |
@@ -77,9 +77,9 @@ benutzen. Über `context.service(VelocityModuleApi.class)` bekommt es
 * die Liste der Backend-Server,
 * und den `ProxyServer` selbst für alles Weitere.
 
-Was ein Modul darüber registriert, entfernt Center2 beim Stoppen wieder. Damit
+Was ein Modul darüber registriert, entfernt MHCenter2 beim Stoppen wieder. Damit
 lässt sich zum Beispiel ein MOTD-Modul, eine Wartungsanzeige oder eine
-Netzwerkkoordination schreiben. Center2 selbst bringt so etwas nicht mit; es
+Netzwerkkoordination schreiben. MHCenter2 selbst bringt so etwas nicht mit; es
 macht es nur möglich. Siehe [Velocity-Module](Development-Velocity.md).
 
 ## Warum Velocity keine Minecraft-Version prüft
@@ -87,20 +87,20 @@ macht es nur möglich. Siehe [Velocity-Module](Development-Velocity.md).
 Ein Paper-Server hat genau eine Minecraft-Spielversion. Ein Velocity-Proxy nicht:
 er vermittelt Verbindungen und kann Clients unterschiedlicher Versionen bedienen.
 
-Center2 erfindet deshalb **keine** Minecraft-Version für den Proxy. Der
+MHCenter2 erfindet deshalb **keine** Minecraft-Version für den Proxy. Der
 Minecraft-Bereich ist eine Paper-relevante Kompatibilitätsinformation.
 
-Der **Center2-Versionsbereich** gilt dagegen auf beiden Plattformen: die Modul-API
+Der **MHCenter2-Versionsbereich** gilt dagegen auf beiden Plattformen: die Modul-API
 ist dieselbe.
 
-Auf Paper gilt zusätzlich: kann Center2 die Minecraft-Version des Servers nicht
+Auf Paper gilt zusätzlich: kann MHCenter2 die Minecraft-Version des Servers nicht
 bestimmen, wird gar kein Modul geladen. „Unbekannt" heißt dort „Kompatibilität
 nicht bestätigt", nie „keine Prüfung nötig".
 
 ## Wenn ein Modul nicht auftaucht
 
 Prüfe zuerst die Plattform des Moduls. Die Modul-Detailansicht im Paper-Admin-Menü
-zeigt sie als **Paper**, **Velocity** oder **Paper & Velocity**. Weil Center2 eine
+zeigt sie als **Paper**, **Velocity** oder **Paper & Velocity**. Weil MHCenter2 eine
 gemeinsame JAR für beide Seiten ist, ist das der häufigste Grund für „mein Modul
 startet nicht": es liegt im falschen `Modules/Jars`-Ordner.
 

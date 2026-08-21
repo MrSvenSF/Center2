@@ -4,4 +4,4 @@ enabled: true
 
 # Was der Command antwortet. Nach einer Aenderung reicht "/center reload":
 # das Modul liest diese Datei in onReload() neu ein und bleibt dabei laufen.
-greeting: "Center2 TestModule funktioniert."
+greeting: "MHCenter2 TestModule funktioniert."

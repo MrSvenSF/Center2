@@ -1,5 +1,5 @@
 # ============================================================================
-# Center2 - .gitignore
+# MHCenter2 - .gitignore
 # ============================================================================
 
 # --- Maven ------------------------------------------------------------------
@@ -76,7 +76,7 @@ TestServer/
 testing/MinecraftTestNetwork/
 
 # --- Gebaute Artefakte ------------------------------------------------------
-Center2-*.jar
-Center2-TestModule-*.jar
-**/Center2-*.jar
-**/Center2-TestModule-*.jar
+MHCenter2-*.jar
+MHCenter2-TestModule-*.jar
+**/MHCenter2-*.jar
+**/MHCenter2-TestModule-*.jar

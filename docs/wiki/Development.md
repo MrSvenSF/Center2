@@ -1,19 +1,19 @@
-# Eigenes Center2-Modul entwickeln
+# Eigenes MHCenter2-Modul entwickeln
 
-Ein Center2-Modul erweitert Center2 um eigene Funktionen. Es ist eine normale
-JAR, die gegen die Center2-Modul-API gebaut wird und unter
-`plugins/Center2/Modules/Jars/` liegt.
+Ein MHCenter2-Modul erweitert MHCenter2 um eigene Funktionen. Es ist eine normale
+JAR, die gegen die MHCenter2-Modul-API gebaut wird und unter
+`plugins/MHCenter2/Modules/Jars/` liegt.
 
 ## Was ein Modul ist – und was nicht
 
-Ein Center2-Modul ist **kein** Paper-Plugin:
+Ein MHCenter2-Modul ist **kein** Paper-Plugin:
 
 * keine `JavaPlugin`-Unterklasse,
 * keine `plugin.yml`,
 * keine eigene Pluginregistrierung,
 * kein eigener Paper- oder Velocity-Lifecycle.
 
-Center2 kontrolliert Laden, Aktivieren, Deaktivieren und den Fehlerzustand. Ein
+MHCenter2 kontrolliert Laden, Aktivieren, Deaktivieren und den Fehlerzustand. Ein
 Modul entscheidet nicht selbst, dass es aktiv ist.
 
 ## Der Weg durch die Entwicklerdoku
@@ -22,7 +22,7 @@ Modul entscheidet nicht selbst, dass es aktiv ist.
 |-------|--------|
 | [Erstes Modul](Development-First-Module.md) | Maven-Projekt, Hauptklasse, JAR bauen, installieren |
 | [Metadaten](Development-Metadata.md) | `center-module.properties` vollständig |
-| [Versionskompatibilität](Development-Versioning.md) | Center2- und Minecraft-Bereiche |
+| [Versionskompatibilität](Development-Versioning.md) | MHCenter2- und Minecraft-Bereiche |
 | [Paper-Module](Development-Paper.md) | `platform=PAPER` |
 | [Velocity-Module](Development-Velocity.md) | `platform=VELOCITY`, Events, MOTD, Scheduler |
 | [BOTH-Module](Development-Both.md) | ein Modul für beide Seiten |
@@ -45,7 +45,7 @@ public interface CenterModule {
 }
 ```
 
-Center2 ruft sie in dieser Reihenfolge und nie parallel auf:
+MHCenter2 ruft sie in dieser Reihenfolge und nie parallel auf:
 
 1. **`onLoad(context)`** – der Kontext wird übergeben. Nichts vom Modul ist aktiv.
    Hier den Kontext merken und die eigene Konfiguration lesen.
@@ -60,7 +60,7 @@ Die Hauptklasse braucht einen **öffentlichen Konstruktor ohne Argumente**.
 Kein Schritt davon lädt eine JAR neu: eine geänderte Modul-JAR braucht weiterhin
 einen Serverneustart.
 
-## Was ein Modul von Center2 bekommt
+## Was ein Modul von MHCenter2 bekommt
 
 ```java
 context.moduleId();          // die eigene ID
@@ -80,18 +80,18 @@ unterschiedlich – das ist die eine Stelle, an der Plattformcode anfängt.
 
 * Java 25
 * Maven
-* Center2 einmal lokal installiert, damit die API als Abhängigkeit verfügbar ist:
+* MHCenter2 einmal lokal installiert, damit die API als Abhängigkeit verfügbar ist:
 
 ```bash
-cd Center2
+cd MHCenter2
 mvn clean install
 ```
 
 ## Wichtig: Module sind keine Sandbox
 
 Ein Modul ist normaler Java-Code im selben Prozess wie der Server, mit denselben
-Möglichkeiten wie jeder andere Code dort. Center2 verwaltet den Lebenszyklus, es
-isoliert keine Rechte. Was Center2 leistet, ist **Fehlerisolation**: ein
+Möglichkeiten wie jeder andere Code dort. MHCenter2 verwaltet den Lebenszyklus, es
+isoliert keine Rechte. Was MHCenter2 leistet, ist **Fehlerisolation**: ein
 abstürzendes Modul reißt weder den Core noch andere Module mit.
 
 Für Serverbetreiber heißt das: Module nur aus vertrauenswürdigen Quellen

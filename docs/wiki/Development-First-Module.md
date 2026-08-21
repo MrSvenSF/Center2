@@ -1,14 +1,14 @@
 # Das erste Modul
 
-Diese Seite baut Schritt für Schritt ein minimales Center2-Modul. Als Referenz
+Diese Seite baut Schritt für Schritt ein minimales MHCenter2-Modul. Als Referenz
 dient das mitgelieferte `TestModule`.
 
-## 1. Center2 lokal installieren
+## 1. MHCenter2 lokal installieren
 
-Die Modul-API kommt aus der Center2-JAR. Einmal installieren:
+Die Modul-API kommt aus der MHCenter2-JAR. Einmal installieren:
 
 ```bash
-cd Center2
+cd MHCenter2
 mvn clean install
 ```
 
@@ -33,15 +33,15 @@ Damit liegt `net.managerhub:center:<version>` im lokalen Maven-Repository.
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>25</maven.compiler.release>
-    <center.version>1.0.0-beta.1</center.version>
+    <mhcenter2.version>1.0.0</mhcenter2.version>
   </properties>
 
   <dependencies>
-    <!-- Die Center2-API wird vom Server bereitgestellt und nie mitgepackt. -->
+    <!-- Die MHCenter2-API wird vom Server bereitgestellt und nie mitgepackt. -->
     <dependency>
       <groupId>net.managerhub</groupId>
-      <artifactId>center</artifactId>
-      <version>${center.version}</version>
+      <artifactId>mhcenter2</artifactId>
+      <version>${mhcenter2.version}</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
@@ -53,7 +53,7 @@ Damit liegt `net.managerhub:center:<version>` im lokalen Maven-Repository.
 </project>
 ```
 
-`scope` ist **immer** `provided`: Center2-Klassen dürfen nie in der Modul-JAR
+`scope` ist **immer** `provided`: MHCenter2-Klassen dürfen nie in der Modul-JAR
 landen.
 
 Braucht dein Modul zusätzlich die Paper-API (nur für `platform=PAPER` oder
@@ -96,7 +96,7 @@ Wichtig:
 * Die Klasse implementiert `CenterModule`.
 * Sie hat einen öffentlichen Konstruktor ohne Argumente (hier der Standard-
   konstruktor).
-* Alles, was Center2 dem Modul gibt, steckt im `ModuleContext`.
+* Alles, was MHCenter2 dem Modul gibt, steckt im `ModuleContext`.
 
 ## 4. Metadaten anlegen
 
@@ -128,14 +128,14 @@ mvn clean package
 Ergebnis: `target/MeinModul-1.0.0.jar`
 
 Die JAR enthält nur deinen Code und `center-module.properties`, keine
-Center2-Klasse.
+MHCenter2-Klasse.
 
 ## 6. Modul installieren
 
 JAR kopieren nach:
 
 ```
-plugins/Center2/Modules/Jars/
+plugins/MHCenter2/Modules/Jars/
 ```
 
 Bei einem `platform=VELOCITY`-Modul in den entsprechenden Ordner des Proxys.
@@ -157,21 +157,21 @@ Danach prüfen:
 Erwartete Ausgabe:
 
 ```
---- Center2 Module ---
+--- MHCenter2 Module ---
 Mein Modul (MeinModul) Version 1.0.0 - Aktiviert
 ```
 
 Und in der Konsole:
 
 ```
-[Center2] [MeinModul] geladen auf PAPER.
-[Center2] [MeinModul] aktiviert.
+[MHCenter2] [MeinModul] geladen auf PAPER.
+[MHCenter2] [MeinModul] aktiviert.
 ```
 
 ## 8. Weiter
 
 * Eigene Konfigurationsdateien: `context.configDirectory()` zeigt auf
-  `Modules/Configs/<id>/`. Center2 legt dort nichts an, das macht dein Modul
+  `Modules/Configs/<id>/`. MHCenter2 legt dort nichts an, das macht dein Modul
   selbst.
 * Ressourcen wieder freigeben: [Cleanup](Development-Cleanup.md).
 * Mehr zu Commands: [Commands](Development-Commands.md).

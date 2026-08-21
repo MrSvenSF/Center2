@@ -11,7 +11,7 @@ import net.managerhub.center.api.ModulePlatform;
 import net.managerhub.center.api.velocity.VelocityModuleApi;
 
 /**
- * The Center2 Velocity test module.
+ * The MHCenter2 Velocity test module.
  *
  * <p>It exists to prove that an external jar below {@code Modules/Jars} of a
  * <em>proxy</em> is found, read, loaded, started, reloaded, stopped and started
@@ -23,7 +23,7 @@ import net.managerhub.center.api.velocity.VelocityModuleApi;
  * network; it only writes down what it saw.</p>
  *
  * <p>The everyday part of the module - id, folder, log, cleanup, command,
- * network - comes from the platform neutral Center2 module API. Only
+ * network - comes from the platform neutral MHCenter2 module API. Only
  * {@link VelocityModuleApi}, which it asks for with
  * {@code context.service(...)}, is Velocity specific.</p>
  */
@@ -44,7 +44,7 @@ public final class VelocityTestModule implements CenterModule {
     public void onLoad(final ModuleContext context) {
         this.context = context;
         resourceOpen.set(true);
-        // Center2 runs this when the module is stopped and also when a later step
+        // MHCenter2 runs this when the module is stopped and also when a later step
         // of the start fails.
         context.registerCleanup(() -> {
             resourceOpen.set(false);
@@ -56,7 +56,7 @@ public final class VelocityTestModule implements CenterModule {
     @Override
     public void onEnable() {
         final boolean accepted = context.registerCommand("center proxytest",
-                sender -> sender.sendMessage("<green>Center2 Velocity TestModule funktioniert."
+                sender -> sender.sendMessage("<green>MHCenter2 Velocity TestModule funktioniert."
                         + " <gray>Aufgerufen von <white>" + sender.name()));
         context.logger().info("Command angenommen: " + accepted + ".");
 
@@ -75,7 +75,7 @@ public final class VelocityTestModule implements CenterModule {
     /**
      * Everything this module does with the proxy.
      *
-     * <p>All three registrations go through Center2, so all three are removed
+     * <p>All three registrations go through MHCenter2, so all three are removed
      * again when the module is stopped - the event handler, the scheduled task
      * and the command.</p>
      */
@@ -85,7 +85,7 @@ public final class VelocityTestModule implements CenterModule {
         proxy.subscribe(com.velocitypowered.api.event.player.ServerPostConnectEvent.class,
                 event -> serverSwitches.incrementAndGet());
 
-        // The proxy scheduler. Center2 cancels the task when the module stops.
+        // The proxy scheduler. MHCenter2 cancels the task when the module stops.
         proxy.schedule(ticks::incrementAndGet, Duration.ofSeconds(30), Duration.ofSeconds(30));
 
         final String servers = proxy.servers().stream()

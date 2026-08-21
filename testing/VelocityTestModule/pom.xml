@@ -6,18 +6,18 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>net.managerhub</groupId>
-  <artifactId>center-velocitytestmodule</artifactId>
-  <version>1.0.0-beta.1</version>
+  <artifactId>mhcenter2-velocitytestmodule</artifactId>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
 
-  <name>Center2 Velocity TestModule</name>
-  <description>Center2 Velocity TestModule - proves that a proxy module is loaded and can register a command.</description>
+  <name>MHCenter2 Velocity TestModule</name>
+  <description>MHCenter2 Velocity TestModule - proves that a proxy module is loaded and can register a command.</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>25</maven.compiler.release>
 
-    <center.version>1.0.0-beta.1</center.version>
+    <mhcenter2.version>1.0.0</mhcenter2.version>
     <velocity.api.version>3.5.0-SNAPSHOT</velocity.api.version>
     <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
     <maven.surefire.plugin.version>3.5.2</maven.surefire.plugin.version>
@@ -38,20 +38,20 @@
 
   <dependencies>
     <!--
-      The Center2 module API. Center2 is already running when the module is
+      The MHCenter2 module API. MHCenter2 is already running when the module is
       loaded, so these classes must never be packed into the module jar.
-      Build the core once with "mvn install" in ../../Center2.
+      Build the core once with "mvn install" in ../../MHCenter2.
     -->
     <dependency>
       <groupId>net.managerhub</groupId>
-      <artifactId>center</artifactId>
-      <version>${center.version}</version>
+      <artifactId>mhcenter2</artifactId>
+      <version>${mhcenter2.version}</version>
       <scope>provided</scope>
     </dependency>
 
     <!--
       Provided by the proxy. A module only needs this to name a Velocity event;
-      everything else it uses comes from the Center2 module API.
+      everything else it uses comes from the MHCenter2 module API.
     -->
     <dependency>
       <groupId>com.velocitypowered</groupId>
@@ -62,8 +62,8 @@
   </dependencies>
 
   <build>
-    <!-- The jar that is copied into plugins/Center2/Modules/Jars on the proxy. -->
-    <finalName>Center2-VelocityTestModule-${project.version}</finalName>
+    <!-- The jar that is copied into plugins/MHCenter2/Modules/Jars on the proxy. -->
+    <finalName>MHCenter2-VelocityTestModule-${project.version}</finalName>
 
     <plugins>
       <plugin>

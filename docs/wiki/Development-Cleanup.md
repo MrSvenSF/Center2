@@ -4,19 +4,19 @@
 context.registerCleanup(() -> HandlerList.unregisterAll(listener));
 ```
 
-Mit `registerCleanup` sagst du Center2, wie eine Ressource deines Moduls wieder
+Mit `registerCleanup` sagst du MHCenter2, wie eine Ressource deines Moduls wieder
 verschwindet.
 
 ## Warum das nötig ist
 
-**Center2 kann nur entfernen, was es kennt.** Ein Listener, ein Scheduler-Task,
-ein Thread oder eine offene Datei entsteht in deinem Modulcode; Center2 sieht
+**MHCenter2 kann nur entfernen, was es kennt.** Ein Listener, ein Scheduler-Task,
+ein Thread oder eine offene Datei entsteht in deinem Modulcode; MHCenter2 sieht
 davon nichts.
 
 Ohne Cleanup entsteht beim Deaktivieren ein Zombie: Das Modul steht im Menü auf
 **Deaktiviert**, aber sein Listener feuert weiter. Genau das soll nicht passieren.
 
-## Wann Center2 das Cleanup ausführt
+## Wann MHCenter2 das Cleanup ausführt
 
 | Situation | Cleanup läuft |
 |-----------|---------------|
@@ -49,7 +49,7 @@ public void onEnable() {
     context.registerCleanup(task::cancel);
 
     // Wenn es hier kracht, sind Listener und Task trotzdem schon angemeldet
-    // und werden von Center2 wieder entfernt.
+    // und werden von MHCenter2 wieder entfernt.
     riskanteInitialisierung();
 }
 ```
@@ -95,7 +95,7 @@ context.registerCleanup(pool::shutdownNow);
 ## Was du nicht anmelden musst
 
 Commands, die du über `context.registerCommand(...)` registriert hast. Die hat
-Center2 selbst ausgegeben und entfernt sie auch selbst.
+MHCenter2 selbst ausgegeben und entfernt sie auch selbst.
 
 ## Wenn ein Cleanup fehlschlägt
 
@@ -125,9 +125,9 @@ Beides ist erlaubt und ergänzt sich:
 
 Für Ressourcen ist das Cleanup die sichere Wahl.
 
-## Was Center2 dir abnimmt
+## Was MHCenter2 dir abnimmt
 
-Für einiges brauchst du gar kein eigenes Cleanup, weil Center2 es selbst
+Für einiges brauchst du gar kein eigenes Cleanup, weil MHCenter2 es selbst
 zurücknimmt:
 
 | Registriert über | Wird automatisch entfernt |
@@ -139,4 +139,4 @@ zurücknimmt:
 
 Alles andere – ein Bukkit-Listener, ein Bukkit-Task, eine offene Datei, ein
 eigener Thread, alles was du direkt auf `VelocityModuleApi.proxy()` registrierst
-– kennt Center2 nicht. Dafür ist `registerCleanup(...)` da.
+– kennt MHCenter2 nicht. Dafür ist `registerCleanup(...)` da.

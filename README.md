@@ -1,13 +1,13 @@
-# Center2
+# MHCenter2
 
-Center2 ist ein gemeinsamer Minecraft-Server-Core für **Paper 1.21.11** und
+MHCenter2 ist ein gemeinsamer Minecraft-Server-Core für **Paper 1.21.11** und
 **Velocity 3.5.x**. Dieselbe JAR läuft auf beiden Plattformen und stellt
 Konfiguration, Administration, Netzwerkkommunikation und eine öffentliche
 Modul-API bereit.
 
-> **Aktueller Stand:** 1.0.0-beta.1 · Java 25 · Maven
+> **Aktueller Stand:** 1.0.0 · Java 25 · Maven
 >
-> **Transparenzhinweis:** Center2 wurde mit Unterstützung künstlicher
+> **Transparenzhinweis:** MHCenter2 wurde mit Unterstützung künstlicher
 > Intelligenz entwickelt. Architektur, Auswahl, Prüfung, Tests und
 > Veröffentlichung liegen in der Verantwortung des Projektinhabers.
 
@@ -16,16 +16,16 @@ Modul-API bereit.
 - gemeinsame Core-JAR für Paper und Velocity
 - `/center info`, `/center reload` und Modulverwaltung
 - konfigurierbare Commands, Permissions, Menüs sowie deutsche und englische Texte
-- lokale SQLite-Datenhaltung für Center2-Zustände
+- lokale SQLite-Datenhaltung für MHCenter2-Zustände
 - optionale MariaDB für zuverlässige netzwerkweite Aktionen und kurzlebige
   gemeinsame Moduldaten – auch ohne Spieler
 - Plugin Messaging als Fallback für Netzwerk-Reloads und Modul-Actions
 - externe Module für `PAPER`, `VELOCITY` oder `BOTH`
-- Versionsprüfung für Center2 und bei Paper zusätzlich für Minecraft
+- Versionsprüfung für MHCenter2 und bei Paper zusätzlich für Minecraft
 - transaktionale Reloads und automatische Config-Migrationen
 
-Center2 ist kein Webdienst und stellt keine REST- oder HTTP-API bereit. Mit
-„API“ ist die Java-Schnittstelle gemeint, gegen die externe Center2-Module
+MHCenter2 ist kein Webdienst und stellt keine REST- oder HTTP-API bereit. Mit
+„API“ ist die Java-Schnittstelle gemeint, gegen die externe MHCenter2-Module
 gebaut werden.
 
 ## Installation
@@ -38,10 +38,15 @@ Voraussetzungen:
 
 Installation auf Paper und Velocity:
 
-1. `Center2-1.0.0-beta.1.jar` in den jeweiligen Ordner `plugins/` legen.
+1. `MHCenter2-1.0.0.jar` in den jeweiligen Ordner `plugins/` legen.
 2. Server beziehungsweise Proxy einmal starten.
-3. Die erzeugte Konfiguration unter `plugins/Center2/` prüfen.
+3. Die erzeugte Konfiguration unter `plugins/MHCenter2/` prüfen.
 4. Nach Änderungen `/center reload` verwenden oder die Instanz neu starten.
+
+Beim Update von `1.0.0-beta.1` zuerst Server und Proxy stoppen, die alte
+Beta-JAR entfernen und den vorhandenen Ordner `plugins/Center2/` in
+`plugins/MHCenter2/` umbenennen. Dadurch bleiben Konfigurationen,
+Modulzustände und lokale SQLite-Daten erhalten.
 
 Die MariaDB ist standardmäßig deaktiviert. Ohne sie funktionieren alle lokalen
 Core-Funktionen weiter. Netzwerkfunktionen verwenden dann Plugin Messaging und
@@ -49,11 +54,11 @@ benötigen dafür eine Spielerverbindung.
 
 ## Netzwerk und Datenbanken
 
-Center2 trennt lokale und gemeinsame Daten bewusst:
+MHCenter2 trennt lokale und gemeinsame Daten bewusst:
 
 | Bereich | Technik | Zweck |
 |---|---|---|
-| lokaler Zustand | SQLite | Center2-Metadaten und Aktivierungszustände der Module |
+| lokaler Zustand | SQLite | MHCenter2-Metadaten und Aktivierungszustände der Module |
 | zuverlässige gemeinsame Daten | optionale MariaDB | Heartbeats, Actions, Quittungen und kurzlebiger Modul-Storage |
 | Fallback-Kommunikation | Plugin Messaging | Reloads und Modul-Actions über Spielerverbindungen |
 
@@ -62,23 +67,27 @@ Inventare oder andere Übergabedaten werden dadurch nicht unbemerkt nur auf eine
 einzelnen Server abgelegt.
 
 Modul-Actions verwenden bevorzugt MariaDB. Ist sie nicht verfügbar, nutzt
-Center2 Plugin Messaging. Wartet ein Zielserver noch auf eine Spielerverbindung,
+MHCenter2 Plugin Messaging. Wartet ein Zielserver noch auf eine Spielerverbindung,
 hält Velocity die Action bis zum Join oder bis zum Ablauf ihrer Laufzeit im
 Arbeitsspeicher. MariaDB bleibt für garantierte Zustellung ohne Spieler und für
 atomaren gemeinsamen Storage der zuverlässige Weg.
 
-## Teststand der Beta
+## Teststand von Version 1.0.0
 
 Das lokale Testnetz mit Velocity und zwei Paper-Servern wurde praktisch
 geprüft. Menüs, Commands, Permissions, Modul-Lebenszyklus, Serverwechsel,
 Plugin-Messaging für Modul-Actions und der netzwerkweite Reload funktionieren
 ohne aktivierte MariaDB.
 
-Der MariaDB-Code ist durch automatisierte Tests abgedeckt, wurde bisher aber
-**noch nicht in einem echten Laufzeittest mit einer externen MariaDB geprüft**.
-Die Remote-Datenbank bleibt deshalb optional. Betreiber sollten sie vor dem
-produktiven Einsatz in ihrer eigenen Umgebung testen; ohne MariaDB gelten die
-oben beschriebenen Grenzen des Plugin-Messaging-Fallbacks.
+Zusätzlich wurde MHCenter2 gegen eine echte MariaDB-11.8-Instanz in Docker
+getestet. Alle drei Knoten verbanden sich gleichzeitig mit der Datenbank. Der
+netzwerkweite Reload war mit und ohne Spieler auf Paper, Paper2 und Velocity
+erfolgreich. Eine Modul-Action wurde ohne Spieler von Paper zu Paper2
+zugestellt; der gemeinsame Modul-Storage übergab dieselben Daten per
+`put()`/`take()` nachweislich genau einmal.
+
+MariaDB bleibt optional. Ohne sie gelten weiterhin die oben beschriebenen
+Grenzen des Plugin-Messaging-Fallbacks.
 
 ## Commands und Permissions
 
@@ -100,17 +109,17 @@ Master-Permission lautet `center.admin.*`.
 Modul-JARs werden hier abgelegt:
 
 ```text
-plugins/Center2/Modules/Jars/
+plugins/MHCenter2/Modules/Jars/
 ```
 
 Ihre Konfigurationen liegen getrennt unter:
 
 ```text
-plugins/Center2/Modules/Configs/<modul-id>/
+plugins/MHCenter2/Modules/Configs/<modul-id>/
 ```
 
 Ein Modul deklariert seine eindeutige ID, Version, Plattform und kompatiblen
-Center2-Versionen; auf Paper zusätzlich die kompatiblen Minecraft-Versionen.
+MHCenter2-Versionen; auf Paper zusätzlich die kompatiblen Minecraft-Versionen.
 Passt eine Version nicht, wird es kontrolliert blockiert. Gleiche Mindest- und
 Höchstversion binden ein Modul exakt an eine Version.
 
@@ -129,7 +138,7 @@ und sollten nur aus vertrauenswürdigen Quellen installiert werden.
 
 | Pfad | Inhalt |
 |---|---|
-| `Center2/` | Core für Paper und Velocity |
+| `MHCenter2/` | Core für Paper und Velocity |
 | `testing/PaperTestModule/` | Paper-Beispielmodul |
 | `testing/VelocityTestModule/` | Velocity-Beispielmodul |
 | `docs/wiki/` | versionierte Quellen der GitHub-Wiki |
@@ -142,7 +151,7 @@ fertige JARs und KI-Arbeitsdateien werden nicht veröffentlicht.
 Alle drei Bestandteile sind eigenständige Maven-Projekte:
 
 ```bash
-cd Center2
+cd MHCenter2
 mvn clean install
 
 cd ../testing/PaperTestModule
@@ -152,7 +161,7 @@ cd ../VelocityTestModule
 mvn clean package
 ```
 
-Die Core-JAR entsteht unter `Center2/target/Center2-1.0.0-beta.1.jar`. Paper- und
+Die Core-JAR entsteht unter `MHCenter2/target/MHCenter2-1.0.0.jar`. Paper- und
 Velocity-API werden nur zum Kompilieren verwendet; SQLite- und MariaDB-Treiber
 werden in die fertige Core-JAR eingebunden.
 
@@ -170,6 +179,7 @@ Die vollständige Dokumentation ist kostenlos direkt im Repository lesbar:
 - [Konfiguration](docs/wiki/Configuration.md),
   [Permissions](docs/wiki/Permissions.md) und
   [Netzwerk-Reload](docs/wiki/Network-Reload.md)
+- [Teststand](docs/wiki/Testing.md)
 - [optionale MariaDB](docs/wiki/Network-Remote.md) und
   [Sicherheit](docs/wiki/Security.md)
 - [Modulentwicklung](docs/wiki/Development.md),

@@ -1,6 +1,6 @@
 # Permissions
 
-Center2 bringt **kein** eigenes Rollen- oder Gruppensystem mit. Die Nodes werden
+MHCenter2 bringt **kein** eigenes Rollen- oder Gruppensystem mit. Die Nodes werden
 an das Permissionsystem des Servers gereicht; LuckPerms und alle anderen
 funktionieren wie gewohnt.
 
@@ -8,7 +8,7 @@ funktionieren wie gewohnt.
 
 | Node | Wofür |
 |------|-------|
-| `center.admin.*` | Master: **alle** Center2-Adminfunktionen |
+| `center.admin.*` | Master: **alle** MHCenter2-Adminfunktionen |
 | `center.admin` | Admin-Button, Admin-Menü, Serverstatus |
 | `center.admin.reload` | `/center reload` |
 | `center.admin.modules` | Modulübersicht, Modulreihe, Detailansicht |
@@ -73,7 +73,7 @@ passiert immer beim Ausführen.
 
 ## Beispiel mit LuckPerms
 
-LuckPerms ist hier nur ein Beispiel; Center2 braucht es nicht.
+LuckPerms ist hier nur ein Beispiel; MHCenter2 braucht es nicht.
 
 Ein Hauptadministrator bekommt alles:
 

@@ -10,7 +10,7 @@ import net.managerhub.center.api.ModuleContext;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 /**
- * The Center2 test module.
+ * The MHCenter2 test module.
  *
  * <p>It exists to prove that an external jar below {@code Modules/Jars} is
  * found, read, loaded, started and stopped again, that it gets its own folder
@@ -18,7 +18,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
  * It does nothing else.</p>
  *
  * <p>The module is {@code platform=PAPER}, so it may use the Paper API - here the
- * YAML reader of Bukkit. Everything it gets from Center2 is the platform neutral
+ * YAML reader of Bukkit. Everything it gets from MHCenter2 is the platform neutral
  * {@link ModuleContext}.</p>
  */
 public final class TestModule implements CenterModule {
@@ -27,7 +27,7 @@ public final class TestModule implements CenterModule {
     private static final String COMMANDS = "Commands.yml";
 
     /** What the command answers when the configuration says nothing. */
-    private static final String DEFAULT_GREETING = "Center2 TestModule funktioniert.";
+    private static final String DEFAULT_GREETING = "MHCenter2 TestModule funktioniert.";
 
     private ModuleContext context;
 
@@ -89,7 +89,7 @@ public final class TestModule implements CenterModule {
             context.logger().warn("'commands.test.command' fehlt in " + COMMANDS + ".");
             return;
         }
-        // Center2 removes the command again when the module is stopped, so the
+        // MHCenter2 removes the command again when the module is stopped, so the
         // module does not have to register a cleanup for it.
         context.registerCommand(path, sender -> sender.sendMessage(greeting));
         for (final String alias : commands.getStringList("commands.test.aliases")) {

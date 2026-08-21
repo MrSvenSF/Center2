@@ -9,20 +9,20 @@ externe JAR erkannt, geladen, gestartet, neu geladen und wieder gestoppt wird.
 | `TestModule/` | `PAPER` | eigene Konfiguration, konfigurierbarer Command, `onReload()` |
 | `VelocityTestModule/` | `VELOCITY` | Proxy-Command, Velocity-Event, Scheduler, Serverliste, Cleanup |
 
-Beide sind eigenständige Maven-Projekte neben `Center2/`.
+Beide sind eigenständige Maven-Projekte neben `MHCenter2/`.
 
 ## Bauen
 
 Zuerst den Core installieren, dann das Beispiel bauen:
 
 ```bash
-cd Center2 && mvn clean install
+cd MHCenter2 && mvn clean install
 cd ../TestModule && mvn clean package
 cd ../VelocityTestModule && mvn clean package
 ```
 
 Die fertigen JARs kopierst du von Hand nach
-`plugins/Center2/Modules/Jars/` – das Paper-Beispiel auf den Server, das
+`plugins/MHCenter2/Modules/Jars/` – das Paper-Beispiel auf den Server, das
 Velocity-Beispiel auf den Proxy.
 
 ## TestModule (Paper)
@@ -31,8 +31,8 @@ Metadaten:
 
 ```properties
 id=TestModule
-name=Center2 TestModule
-version=1.0.0-beta.1
+name=MHCenter2 TestModule
+version=1.0.0
 author=Manager Hub
 main=net.managerhub.center.testmodule.TestModule
 platform=PAPER
@@ -66,7 +66,7 @@ commands:
 
 ```yaml
 enabled: true
-greeting: "Center2 TestModule funktioniert."
+greeting: "MHCenter2 TestModule funktioniert."
 ```
 
   Änderst du ihn und tippst `/center reload`, antwortet der Command sofort anders
@@ -74,7 +74,7 @@ greeting: "Center2 TestModule funktioniert."
 * **Paper-API im Modul.** Es liest seine YAML-Dateien mit Bukkits
   `YamlConfiguration`. Das darf ein `PAPER`-Modul.
 * **Kein Cleanup nötig.** Es registriert nur einen Command, und den entfernt
-  Center2 selbst wieder.
+  MHCenter2 selbst wieder.
 
 Der Kern:
 
@@ -148,8 +148,8 @@ Metadaten – ohne Minecraft-Bereich:
 
 ```properties
 id=VelocityTestModule
-name=Center2 Velocity TestModule
-version=1.0.0-beta.1
+name=MHCenter2 Velocity TestModule
+version=1.0.0
 author=Manager Hub
 main=net.managerhub.center.velocitytestmodule.VelocityTestModule
 platform=VELOCITY
@@ -163,7 +163,7 @@ Was es zeigt:
   Paper.
 * **Velocity-Event.** Es abonniert `ServerPostConnectEvent` und zählt
   Serverwechsel.
-* **Proxy-Scheduler.** Ein wiederholter Task, den Center2 beim Stoppen abbricht.
+* **Proxy-Scheduler.** Ein wiederholter Task, den MHCenter2 beim Stoppen abbricht.
 * **Serverliste.** Es schreibt die bekannten Backend-Server ins Log.
 * **Cleanup**, das eine Ressource wieder freigibt.
 * **`onReload()`**, das meldet, was es bisher gesehen hat.
@@ -174,7 +174,7 @@ Der Kern:
 @Override
 public void onEnable() {
     final boolean accepted = context.registerCommand("center proxytest",
-            sender -> sender.sendMessage("<green>Center2 Velocity TestModule funktioniert."
+            sender -> sender.sendMessage("<green>MHCenter2 Velocity TestModule funktioniert."
                     + " <gray>Aufgerufen von <white>" + sender.name()));
     context.logger().info("Command angenommen: " + accepted + ".");
 
@@ -212,7 +212,7 @@ center proxytest      -> funktioniert wieder
 Im Log siehst du dabei auch, dass das Cleanup beim Deaktivieren läuft, welche
 Server der Proxy kennt und was ein Reload meldet.
 
-Sein `pom.xml` braucht zwei `provided`-Abhängigkeiten: die Center2-API und die
+Sein `pom.xml` braucht zwei `provided`-Abhängigkeiten: die MHCenter2-API und die
 Velocity-API. Letztere nur, um den Eventtyp benennen zu können.
 
 ## Als Vorlage benutzen

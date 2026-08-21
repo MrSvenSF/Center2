@@ -1,14 +1,14 @@
 # Modulcommands
 
 Ein Modul registriert seine Commands nie selbst beim Server oder beim Proxy. Es
-übergibt sie an Center2:
+übergibt sie an MHCenter2:
 
 ```java
 boolean accepted = context.registerCommand("meinmodul hallo",
         sender -> sender.sendMessage("<green>Hallo, " + sender.name() + "!"));
 ```
 
-Damit gilt die sichere Registrierung von Center2: kein Command des Cores und kein
+Damit gilt die sichere Registrierung von MHCenter2: kein Command des Cores und kein
 Command eines anderen Plugins kann übernommen werden.
 
 ## Der Pfad
@@ -31,20 +31,20 @@ Schreibweise wie in `Commands.yml`:
 ## Der Rückgabewert ist ehrlich
 
 `registerCommand` liefert `true` **nur**, wenn der Command wirklich in den
-Center2-Commandbaum aufgenommen wurde.
+MHCenter2-Commandbaum aufgenommen wurde.
 
 `false` bekommst du bei:
 
 | Grund | Beispiel |
 |-------|----------|
 | ungültiger Pfad | `"/meinmodul hallo"` mit Slash |
-| Pfad eines Center2-Core-Commands | `"center reload"`, `"center modules"` |
+| Pfad eines MHCenter2-Core-Commands | `"center reload"`, `"center modules"` |
 | Pfad eines konfigurierten Core-Commands oder seines Alias | `"center info"` |
 | Pfad, den ein anderes Modul schon benutzt | doppelte Registrierung |
 | Commandname, der einem **anderen Plugin** gehört | `"spawn home"`, wenn ein anderes Plugin `/spawn` besitzt |
 
-Den letzten Fall prüft Center2 direkt bei der Plattform: auf Paper in der
-CommandMap, auf Velocity im `CommandManager`. Ein Name, den Center2 selbst
+Den letzten Fall prüft MHCenter2 direkt bei der Plattform: auf Paper in der
+CommandMap, auf Velocity im `CommandManager`. Ein Name, den MHCenter2 selbst
 registriert hat, zählt dabei nicht als fremd – `"center test"` ist also in
 Ordnung.
 
@@ -90,7 +90,7 @@ entschärfen, sonst kann er als MiniMessage interpretiert werden.
 
 ## Eigene Berechtigungen
 
-Center2 prüft für einen Modulcommand keine Permission. Wenn dein Command eine
+MHCenter2 prüft für einen Modulcommand keine Permission. Wenn dein Command eine
 braucht, prüf sie selbst:
 
 ```java
@@ -105,9 +105,9 @@ context.registerCommand("meinmodul admin", sender -> {
 
 Nimm dafür einen eigenen Namensraum, nicht `center.admin.*`.
 
-## Center2-Commands sind tabu
+## MHCenter2-Commands sind tabu
 
-Ein Modul darf keinen Center2-Core-Command übernehmen. Geschützt sind:
+Ein Modul darf keinen MHCenter2-Core-Command übernehmen. Geschützt sind:
 
 * `/center reload` (fest),
 * `/center modules` (fest),
@@ -119,7 +119,7 @@ Der Versuch wird sofort mit `false` beantwortet.
 ## Lebenszyklus der Commands
 
 * **Aktivieren:** Der Command wird registriert und ist sofort benutzbar.
-* **Deaktivieren:** Center2 entfernt ihn wieder. Ein deaktiviertes Modul ist nicht
+* **Deaktivieren:** MHCenter2 entfernt ihn wieder. Ein deaktiviertes Modul ist nicht
   mehr über seinen Command erreichbar.
 * **Fehler:** Bei `ERROR` verschwinden die Commands des Moduls ebenfalls.
 * **Shutdown:** Alle Modulcommands werden entfernt.
@@ -132,13 +132,13 @@ Der Versuch wird sofort mit `false` beantwortet.
 
 Umgekehrt gilt dasselbe: Legt jemand in `Commands.yml` einen Core-Command oder
 einen Alias auf einen Pfad, den dein laufendes Modul bereits bedient, lehnt
-Center2 die **neue Command-Konfiguration** ab. Der Reload schlägt mit einer
+MHCenter2 die **neue Command-Konfiguration** ab. Der Reload schlägt mit einer
 klaren Meldung fehl und der letzte gültige Commandstand bleibt aktiv.
 
 Ohne diese Regel wäre der Reload „erfolgreich" und dein Command danach
 kommentarlos weg.
 
-Dafür musst du **kein** eigenes Cleanup anmelden: Center2 entfernt einen Command,
+Dafür musst du **kein** eigenes Cleanup anmelden: MHCenter2 entfernt einen Command,
 den es selbst ausgegeben hat, von allein.
 
 ## Wo Commands registriert werden
@@ -147,7 +147,7 @@ In `onEnable()`. In `onLoad()` ist das Modul noch nicht aktiv.
 
 ## Konfigurierbar machen
 
-Center2 schreibt Modulcommands nie in seine eigene `Commands.yml`. Willst du den
+MHCenter2 schreibt Modulcommands nie in seine eigene `Commands.yml`. Willst du den
 Pfad konfigurierbar machen, lies ihn aus deiner eigenen Datei unter
 `Modules/Configs/<id>/`. Genau das macht das mitgelieferte TestModule, siehe
 [Beispielmodul](Development-Example.md).

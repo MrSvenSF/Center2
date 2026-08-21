@@ -1,47 +1,47 @@
 # Netzwerk-Reload
 
 `/center reload` lädt nicht nur den Server, auf dem du ihn tippst, sondern das
-ganze Center2-Netzwerk.
+ganze MHCenter2-Netzwerk.
 
 ## Was dabei passiert
 
-1. Center2 prüft deine Permission (`center.admin` + `center.admin.reload`, oder
+1. MHCenter2 prüft deine Permission (`center.admin` + `center.admin.reload`, oder
    die Master-Permission `center.admin.*`).
 2. Dieser Server lädt sich selbst neu: `MainConfig.yml`, `Commands.yml`,
    `Permissions.yml`, die Sprachdatei, die Menüs, die Remote-Einstellungen und
    `onReload()` jedes laufenden Moduls.
 3. Erst wenn das geklappt hat, geht die Anforderung ins Netzwerk.
-4. Velocity lädt seine eigene Center2-Instanz neu.
-5. Die anderen Paper-Server laden ihre Center2-Instanz neu.
+4. Velocity lädt seine eigene MHCenter2-Instanz neu.
+5. Die anderen Paper-Server laden ihre MHCenter2-Instanz neu.
 
-Neu geladen wird **nur Center2**. Nicht Paper, nicht Velocity, nicht andere
-Plugins. Es ist auch kein Plugin-Reload: Center2 liest seine Dateien neu und
+Neu geladen wird **nur MHCenter2**. Nicht Paper, nicht Velocity, nicht andere
+Plugins. Es ist auch kein Plugin-Reload: MHCenter2 liest seine Dateien neu und
 sagt seinen Modulen Bescheid, mehr nicht.
 
 ## Was ein Reload nicht tut
 
-Ein Reload tauscht **keine JAR** aus – weder die von Center2 noch die eines
+Ein Reload tauscht **keine JAR** aus – weder die von MHCenter2 noch die eines
 Moduls. Die Klassen, die laufen, bleiben genau die, die beim Start geladen
 wurden.
 
 > Modul-JAR geändert? **Serverneustart.** `/center reload` hilft dort nicht, und
-> Center2 tut auch nicht so, als ob.
+> MHCenter2 tut auch nicht so, als ob.
 
 ## Die zwei Wege durchs Netzwerk
 
-Center2 nimmt den ersten Weg, der verfügbar ist:
+MHCenter2 nimmt den ersten Weg, der verfügbar ist:
 
 | Weg | Braucht | Erreicht |
 |-----|---------|----------|
 | **Remote-Datenbank** | `remote.enabled: true` und erreichbare MariaDB | jeden Knoten, auch ohne Spieler |
 | **Plugin-Messaging** | mindestens einen Spieler auf dem Ursprungsserver | den Proxy und jeden Server, auf dem jemand online ist |
 
-Ist Remote eingeschaltet, aber gerade nicht erreichbar, sagt Center2 das und
+Ist Remote eingeschaltet, aber gerade nicht erreichbar, sagt MHCenter2 das und
 nimmt den Weg über den Proxy.
 
 ## Rückmeldung
 
-Center2 behauptet nie, ein Server sei neu geladen worden, wenn es dafür keine
+MHCenter2 behauptet nie, ein Server sei neu geladen worden, wenn es dafür keine
 Bestätigung gibt. Pro Knoten gibt es einen von fünf Zuständen:
 
 | Zustand | Bedeutung |
@@ -52,7 +52,7 @@ Bestätigung gibt. Pro Knoten gibt es einen von fünf Zuständen:
 | **nicht erreichbar** | Es gibt gerade keinen Weg dorthin. |
 | **abgelaufen** | Die Anforderung war zu alt, als sie ankam, und wurde nicht mehr ausgeführt. |
 
-Über die Remote-Datenbank zeigt Center2 dir direkt eine Zeile pro Knoten. Über
+Über die Remote-Datenbank zeigt MHCenter2 dir direkt eine Zeile pro Knoten. Über
 den Proxy steht das Ergebnis im Log des Ursprungsservers.
 
 ## Wartende Reloads
@@ -87,7 +87,7 @@ wieder dem Proxy, und es hörte nie auf.
 ## Reload auf dem Proxy
 
 Auf Velocity gibt es `center reload` ebenfalls. Es ist bewusst nur eine
-Bequemlichkeit: **kein** Center2-Netzwerkfeature setzt voraus, dass jemand einen
+Bequemlichkeit: **kein** MHCenter2-Netzwerkfeature setzt voraus, dass jemand einen
 Command auf dem Proxy ausführen kann. Der Proxy wird über die Plugin-Nachricht
 oder über die Remote-Datenbank erreicht, beides ohne Proxy-Konsole.
 

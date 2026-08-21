@@ -1,8 +1,0 @@
-name: Center2
-version: 1.0.0-beta.1
-main: net.managerhub.center.paper.CenterPaperPlugin
-api-version: '1.21.11'
-description: Center2 beta for Paper and Velocity.
-website: https://managerhub.net
-authors:
-  - Manager Hub

@@ -1,0 +1,35 @@
+# MHCenter2 - Menus/CenterAdmin.yml
+#
+# Opened by the admin button of the Center-Info menu and only reachable with the
+# admin permission from Permissions.yml.
+# Slots are counted from 0, every slot may only be used once.
+#
+# "modules" is not a button. Its slot is the anchor of the module row: MHCenter2
+# uses the whole inventory row that slot belongs to. Slot 31 therefore means the
+# slots 27 to 35, so up to nine installed modules are shown directly here.
+
+config-version: 3
+
+title: "MHCenter2 Admin"
+rows: 5
+
+filler:
+  enabled: true
+  material: GRAY_STAINED_GLASS_PANE
+
+items:
+  status:
+    slot: 12
+    material: BOOK
+
+  server-status:
+    slot: 14
+    material: COMPASS
+
+  modules:
+    slot: 31
+    material: CHEST
+
+  back:
+    slot: 40
+    material: ARROW

@@ -1,15 +1,15 @@
 # Konfiguration
 
-Alle Center2-Dateien liegen unter `plugins/Center2/`. Sie verwenden PascalCase.
+Alle MHCenter2-Dateien liegen unter `plugins/MHCenter2/`. Sie verwenden PascalCase.
 
 ## Grundregeln
 
 * Eine bestehende Datei wird **nie** überschrieben. Deine Werte bleiben, wie du
   sie geschrieben hast.
-* Fehlt Center2 nach einem Update ein neuer Standardeintrag, wird **nur dieser
+* Fehlt MHCenter2 nach einem Update ein neuer Standardeintrag, wird **nur dieser
   Eintrag** ergänzt und `config-version` angehoben. Was du geändert hast, bleibt.
   Die Konsole schreibt genau auf, was ergänzt wurde.
-* Eine Datei, die eine **neuere** `config-version` meldet als dieses Center2
+* Eine Datei, die eine **neuere** `config-version` meldet als dieses MHCenter2
   kennt, wird nicht angefasst.
 * Eine völlig leere Datei gilt als kaputter Rest eines Schreibvorgangs und wird
   aus dem Standard wiederhergestellt.
@@ -37,8 +37,8 @@ remote:
   database:
     host: "127.0.0.1"
     port: 3306
-    database: "center2"
-    username: "center2"
+    database: "mhcenter2"
+    username: "mhcenter2"
     password: ""
     ssl: true
   polling:
@@ -70,7 +70,7 @@ zueinander passen, wird erst geprüft, wenn er eingeschaltet ist.
 
 Mit `enabled: true` müssen `server-id`, `host`, `database` und `username` gefüllt
 sein. Fehlt etwas, startet das Remote-System **nicht**, sagt im Log warum, und
-Center2 läuft lokal ganz normal weiter.
+MHCenter2 läuft lokal ganz normal weiter.
 
 Mit `enabled: false` wird nie eine Verbindung aufgebaut – kein Versuch, kein
 Timeout, keine Logzeile. Bei einem Update bleibt `enabled` auf `false`: ein
@@ -80,7 +80,7 @@ eingerichtet hat.
 Alles Weitere unter [Remote-Datenbank](Network-Remote.md).
 
 Steht `menus.center-info.enabled` auf `false`, lässt sich das Menü nicht mehr
-öffnen, der zugehörige Command wird nicht registriert und Center2 trägt in
+öffnen, der zugehörige Command wird nicht registriert und MHCenter2 trägt in
 `Commands.yml` beim Command `center-info` automatisch `enabled: false` ein.
 Umgekehrt passiert das nie: `enabled: true` wird niemals automatisch geschrieben.
 
@@ -167,8 +167,8 @@ abgelehnt.
 
 * Chat- und Menütexte verwenden Adventure MiniMessage (`<green>`, `<white>`, …).
 * Logtexte sind reiner Text.
-* Platzhalter werden als `{name}` geschrieben und von Center2 eingesetzt.
-* Meldungen, die Center2 schreibt, **bevor** eine Konfiguration gelesen werden
+* Platzhalter werden als `{name}` geschrieben und von MHCenter2 eingesetzt.
+* Meldungen, die MHCenter2 schreibt, **bevor** eine Konfiguration gelesen werden
   konnte, sind immer englisch. Dazu gehören Startfehler und die Meldungen der
   Konfigurationsergänzung.
 
@@ -186,7 +186,7 @@ Ein Slot darf nur einmal vergeben sein, das Material muss existieren und als Ite
 verwendbar sein.
 
 In `Menus/CenterAdmin.yml` ist der Eintrag `modules` **kein Knopf**, sondern der
-Anker der Modulreihe: Center2 benutzt die ganze Inventarreihe, zu der dieser Slot
+Anker der Modulreihe: MHCenter2 benutzt die ganze Inventarreihe, zu der dieser Slot
 gehört. Slot 31 bedeutet also die Slots 27 bis 35 und damit bis zu neun Module
 direkt im Admin-Menü.
 
@@ -195,7 +195,7 @@ direkt im Admin-Menü.
 Paper und Velocity.
 
 Hier legt **jedes Modul** seine eigenen Dateien an, in einem Ordner mit seiner
-Modul-ID. Center2 erzeugt dort nichts und liest dort nichts: Format und Inhalt
+Modul-ID. MHCenter2 erzeugt dort nichts und liest dort nichts: Format und Inhalt
 bestimmt allein das Modul.
 
 Beispiel für das mitgelieferte TestModule:
@@ -209,5 +209,5 @@ Modules/Configs/TestModule/
 ## DB/Center.db
 
 Paper und Velocity, jeweils eine eigene Datei. SQLite, immer aktiv, nicht
-abschaltbar. Center2 speichert dort die Schemaversion und welche Module ein
+abschaltbar. MHCenter2 speichert dort die Schemaversion und welche Module ein
 Administrator abgeschaltet hat. Diese Datei bearbeitet man nicht von Hand.

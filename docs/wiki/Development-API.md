@@ -1,6 +1,6 @@
 # API-Referenz
 
-Diese Seite beschreibt den **offiziell unterstützten** Center2-Modulvertrag.
+Diese Seite beschreibt den **offiziell unterstützten** MHCenter2-Modulvertrag.
 
 ## Die Grenze
 
@@ -13,13 +13,13 @@ net.managerhub.center.api.velocity
 
 ist die API. Nur diese Klassen darfst du als Modulautor verwenden.
 
-Jedes andere Center2-Paket ist **intern**: Loader, Menü, Datenbank,
+Jedes andere MHCenter2-Paket ist **intern**: Loader, Menü, Datenbank,
 Command-Registrierung, Konfiguration, Remote-Implementierung und die
 Plattform-Einstiegspunkte. Sie dürfen sich in jeder Version ändern, auch wenn
 eine Klasse dort zufällig `public` ist. Ein Modul, das dorthin greift, wird nicht
 unterstützt.
 
-Das ist keine automatisch erzeugte JavaDoc aller Center2-Klassen, sondern der
+Das ist keine automatisch erzeugte JavaDoc aller MHCenter2-Klassen, sondern der
 Vertrag.
 
 ## Übersicht
@@ -27,12 +27,12 @@ Vertrag.
 | Typ | Zweck |
 |-----|-------|
 | `CenterModule` | die Hauptklasse deines Moduls |
-| `ModuleContext` | alles, was das Modul von Center2 bekommt |
+| `ModuleContext` | alles, was das Modul von MHCenter2 bekommt |
 | `ModuleLogger` | das Log des Moduls |
 | `ModulePlatform` | auf welcher Plattform es läuft |
 | `ModuleCommand` | was ein Modulcommand tut |
 | `ModuleCommandSender` | wer den Command benutzt hat |
-| `ModuleNetwork` | was das Modul im Center2-Netzwerk darf |
+| `ModuleNetwork` | was das Modul im MHCenter2-Netzwerk darf |
 | `ModuleStorage` | kurzlebige Daten in der Remote-Datenbank |
 | `ModuleActionTarget` | welche Knoten eine Action erreichen soll |
 | `ModuleActionMessage` | eine empfangene Action |
@@ -56,14 +56,14 @@ Die Hauptklasse deines Moduls implementiert dieses Interface und braucht einen
 
 Vertrag:
 
-* Center2 ruft die Methoden in dieser Reihenfolge und **nie parallel** auf.
+* MHCenter2 ruft die Methoden in dieser Reihenfolge und **nie parallel** auf.
 * `onLoad` bekommt den Kontext. Nichts vom Modul ist aktiv; hier den Kontext
   merken und die eigene Konfiguration lesen.
 * `onEnable` startet das Modul: Commands, Listener, Tasks.
 * `onReload` läuft bei jedem `/center reload` auf jedem laufenden Modul. Die
   Standardimplementierung tut nichts, ältere Module brechen dadurch nicht.
 * `onDisable` wird für jedes Modul aufgerufen, das erfolgreich aktiviert war.
-* Jede Methode darf werfen. Center2 setzt dann `ERROR`, führt das registrierte
+* Jede Methode darf werfen. MHCenter2 setzt dann `ERROR`, führt das registrierte
   Cleanup aus und lässt Core und andere Module weiterlaufen.
 
 Kein Aufruf davon lädt eine JAR neu. Siehe [Reload](Development-Reload.md).
@@ -89,7 +89,7 @@ Paper-Klasse und umgekehrt.
 | Methode | Vertrag |
 |---------|---------|
 | `moduleId()` | die ID aus den Metadaten |
-| `configDirectory()` | `Modules/Configs/<id>/`. Center2 legt dort **nichts** an; Ordner und Dateien erzeugt das Modul selbst. |
+| `configDirectory()` | `Modules/Configs/<id>/`. MHCenter2 legt dort **nichts** an; Ordner und Dateien erzeugt das Modul selbst. |
 | `logger()` | das Log dieses Moduls, jede Zeile mit `[<id>]` davor |
 | `platform()` | `PAPER` oder `VELOCITY`, **nie** `BOTH` |
 | `registerCleanup(Runnable)` | meldet an, wie eine Ressource wieder verschwindet; läuft bei Disable, bei Fehlern und beim Serverende, neueste Aktion zuerst |
@@ -98,10 +98,10 @@ Paper-Klasse und umgekehrt.
 | `service(Class)` | fragt nach einem Zusatzdienst der Plattform |
 
 `registerCommand` liefert `false`, wenn der Pfad ungültig ist, einem
-Center2-Core-Command oder einem seiner Aliase gehört, ein anderes Modul ihn schon
+MHCenter2-Core-Command oder einem seiner Aliase gehört, ein anderes Modul ihn schon
 benutzt, oder der Commandname bereits einem **anderen Plugin** der Plattform
-gehört. Center2 fragt dafür die Commandliste von Paper beziehungsweise Velocity –
-die Antwort ist also keine Vermutung. Der Grund steht im Serverlog. Center2
+gehört. MHCenter2 fragt dafür die Commandliste von Paper beziehungsweise Velocity –
+die Antwort ist also keine Vermutung. Der Grund steht im Serverlog. MHCenter2
 entfernt einen registrierten Command von allein wieder, wenn das Modul stoppt
 oder scheitert.
 
@@ -200,7 +200,7 @@ public interface ModuleStorage {
 |-------|---|
 | Namensraum | deine Modul-ID; fremde Einträge sind unerreichbar |
 | Schlüssel | bis 190 Zeichen |
-| Payload | bis 8 MiB, Center2 schaut nicht hinein |
+| Payload | bis 8 MiB, MHCenter2 schaut nicht hinein |
 | Ablaufzeit | Pflicht, mindestens eine Sekunde |
 | `take()` | liefert die Daten **genau einmal** im ganzen Netzwerk |
 | ohne Remote | jede Methode wirft; es gibt **keinen** lokalen Fallback |
@@ -233,7 +233,7 @@ public interface ModuleActionListener {
 }
 ```
 
-Läuft im Hintergrund-Thread von Center2, nicht auf dem Mainthread. Wirft der
+Läuft im Hintergrund-Thread von MHCenter2, nicht auf dem Mainthread. Wirft der
 Listener, wird das protokolliert und die Action für diesen Knoten als
 fehlgeschlagen vermerkt – sie wird nicht endlos wiederholt.
 
@@ -256,14 +256,14 @@ public interface VelocityModuleApi {
 
 Nur auf dem Proxy, erreichbar über `context.service(VelocityModuleApi.class)`.
 Sie verwendet bewusst Velocity-Typen. Alles, was ein Modul **hierüber**
-registriert, entfernt Center2 beim Stoppen wieder; was ein Modul direkt auf
+registriert, entfernt MHCenter2 beim Stoppen wieder; was ein Modul direkt auf
 `proxy()` registriert, nicht. Details unter
 [Velocity-Module](Development-Velocity.md).
 
 ## Metadaten als Teil des Vertrags
 
 `center-module.properties` gehört zur API: die Feldnamen und ihre Bedeutung
-ändern sich nicht innerhalb einer Center2-Reihe. Siehe
+ändern sich nicht innerhalb einer MHCenter2-Reihe. Siehe
 [Metadaten](Development-Metadata.md).
 
 ## Nicht Teil der API
@@ -275,12 +275,12 @@ Ausdrücklich **nicht** unterstützt und jederzeit änderbar:
 * die SQLite-Datenbank und ihr Schema,
 * die Tabellen der Remote-Datenbank und die Klassen unter
   `net.managerhub.center.common.remote`,
-* die Command-Registrierung von Center2 selbst,
+* die Command-Registrierung von MHCenter2 selbst,
 * Konfigurationsklassen, Sprachdateien und Textschlüssel,
 * die Paper- und Velocity-Einstiegspunkte.
 
 Brauchst du etwas Plattformspezifisches, nimm die Paper- beziehungsweise
-Velocity-API direkt. Center2 steht dem nicht im Weg, gibt aber nichts von seinem
+Velocity-API direkt. MHCenter2 steht dem nicht im Weg, gibt aber nichts von seinem
 Innenleben heraus.
 
 ## Sicherheitshinweis

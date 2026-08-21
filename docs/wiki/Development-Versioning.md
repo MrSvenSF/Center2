@@ -1,20 +1,20 @@
 # Versionskompatibilität
 
-Ein Modul sagt selbst, mit welchen Versionen es läuft. Center2 startet es nur
+Ein Modul sagt selbst, mit welchen Versionen es läuft. MHCenter2 startet es nur
 innerhalb dieser Grenzen. Das ist eine Sicherheitsgrenze, kein Hinweis.
 
-## Center2-Versionsbereich
+## MHCenter2-Versionsbereich
 
 ```properties
 center-min-version=1.0.0
 center-max-version=1.0.0
 ```
 
-Pflicht für **jedes** Modul, auf beiden Plattformen. Center2 startet das Modul
+Pflicht für **jedes** Modul, auf beiden Plattformen. MHCenter2 startet das Modul
 nur, wenn gilt:
 
 ```
-center-min-version <= laufende Center2-Version <= center-max-version
+center-min-version <= laufende MHCenter2-Version <= center-max-version
 ```
 
 Damit schützt du dein Modul gegen Änderungen an `ModuleContext`, am Lebenszyklus,
@@ -32,7 +32,7 @@ minecraft-max-version=1.21.8
 Pflicht für `platform=PAPER` und `platform=BOTH`. Für `platform=VELOCITY` nicht
 nötig, weil ein Proxy keine einzelne Minecraft-Spielversion hat.
 
-Auf Paper vergleicht Center2 die **echte Minecraft-Version** des Servers. Passt
+Auf Paper vergleicht MHCenter2 die **echte Minecraft-Version** des Servers. Passt
 sie nicht: Zustand `INCOMPATIBLE_MINECRAFT`.
 
 Auf Velocity wird dieser Bereich nicht geprüft, auch bei einem `BOTH`-Modul
@@ -54,7 +54,7 @@ Beispiel `minecraft-min-version=1.21.4`, `minecraft-max-version=1.21.8`:
 
 Beispiel `center-min-version=0.2.0`, `center-max-version=0.2.9`:
 
-| Center2 | Ergebnis |
+| MHCenter2 | Ergebnis |
 |---------|----------|
 | 0.1.9 | `INCOMPATIBLE_CENTER` |
 | 0.2.0 | erlaubt |
@@ -63,7 +63,7 @@ Beispiel `center-min-version=0.2.0`, `center-max-version=0.2.9`:
 
 ## Verglichen wird nach Zahlen
 
-Center2 vergleicht Versionen **semantisch**, nie als Text:
+MHCenter2 vergleicht Versionen **semantisch**, nie als Text:
 
 * `1.21.9` ist **älter** als `1.21.11`. Ein Textvergleich würde das falsch
   herum sehen.
@@ -75,8 +75,8 @@ Ungültige Angaben wie `latest` oder `newest` lehnen die Metadaten ab.
 
 ## Keine Annahme über neuere Versionen
 
-Center2 nimmt **nicht** an, dass ein Modul auf einer neueren Version läuft. Auch
-eine neuere Minecraft- oder Center2-Version kann Breaking Changes enthalten.
+MHCenter2 nimmt **nicht** an, dass ein Modul auf einer neueren Version läuft. Auch
+eine neuere Minecraft- oder MHCenter2-Version kann Breaking Changes enthalten.
 
 Wenn du weißt, dass dein Modul eine ganze Reihe unterstützt, sag es ausdrücklich:
 
@@ -96,11 +96,11 @@ center-max-version=1.0.0
 
 ## Sonderfall Paper ohne erkennbare Minecraft-Version
 
-Kann Center2 auf Paper die Minecraft-Version nicht bestimmen, wird **kein** Modul
+Kann MHCenter2 auf Paper die Minecraft-Version nicht bestimmen, wird **kein** Modul
 geladen, und die Konsole erklärt warum. „Unbekannt" heißt dort „Kompatibilität
 nicht bestätigt", nie „keine Prüfung nötig".
 
 ## Deine eigene Modulversion
 
-Das Feld `version` ist nur eine Information für Anzeige und Logs. Center2 leitet
+Das Feld `version` ist nur eine Information für Anzeige und Logs. MHCenter2 leitet
 daraus nichts ab und vergleicht es mit nichts.

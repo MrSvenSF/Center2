@@ -22,7 +22,7 @@ Der Minecraft-Bereich ist Pflicht.
 
 ## Maven
 
-Neben der Center2-API kommt die Paper-API dazu, beide `provided`:
+Neben der MHCenter2-API kommt die Paper-API dazu, beide `provided`:
 
 ```xml
   <repositories>
@@ -35,8 +35,8 @@ Neben der Center2-API kommt die Paper-API dazu, beide `provided`:
   <dependencies>
     <dependency>
       <groupId>net.managerhub</groupId>
-      <artifactId>center</artifactId>
-      <version>1.0.0-beta.1</version>
+      <artifactId>mhcenter2</artifactId>
+      <version>1.0.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -72,11 +72,11 @@ public final class MeinPaperModul implements CenterModule {
 
     @Override
     public void onEnable() {
-        final Plugin center = Bukkit.getPluginManager().getPlugin("Center2");
+        final Plugin center = Bukkit.getPluginManager().getPlugin("MHCenter2");
         final Listener listener = new JoinListener();
 
         Bukkit.getPluginManager().registerEvents(listener, center);
-        // Center2 weiss nichts von diesem Listener, also sagen wir gleich,
+        // MHCenter2 weiss nichts von diesem Listener, also sagen wir gleich,
         // wie er wieder verschwindet.
         context.registerCleanup(() -> HandlerList.unregisterAll(listener));
 
@@ -102,19 +102,19 @@ public final class MeinPaperModul implements CenterModule {
 Für `HandlerList` fehlt oben der Import `org.bukkit.event.HandlerList`; im echten
 Projekt gehört er dazu.
 
-## Center2 als Plugin-Instanz
+## MHCenter2 als Plugin-Instanz
 
 Paper verlangt für Listener und Scheduler eine `Plugin`-Instanz. Ein Modul ist
-selbst kein Plugin, benutzt also die Center2-Instanz:
+selbst kein Plugin, benutzt also die MHCenter2-Instanz:
 
 ```java
-final Plugin center = Bukkit.getPluginManager().getPlugin("Center2");
+final Plugin center = Bukkit.getPluginManager().getPlugin("MHCenter2");
 ```
 
-Das ist Paper-API, nicht Center2-API: Center2 gibt nichts von seinem Innenleben
+Das ist Paper-API, nicht MHCenter2-API: MHCenter2 gibt nichts von seinem Innenleben
 heraus.
 
-Beachte: Wenn Center2 heruntergefahren wird, entfernt Paper alles, was unter
+Beachte: Wenn MHCenter2 heruntergefahren wird, entfernt Paper alles, was unter
 dieser Plugin-Instanz registriert wurde. Beim **Deaktivieren eines einzelnen
 Moduls** passiert das nicht automatisch, deshalb ist das Cleanup wichtig, siehe
 [Cleanup](Development-Cleanup.md).
@@ -128,14 +128,14 @@ Nicht tun:
 * kein `Bukkit.getPluginManager().enablePlugin(...)`,
 * keine Registrierung des Moduls als eigenständiges Plugin.
 
-Ein Modul, das sich selbst als Plugin registriert, entzieht sich der Center2-
-Verwaltung: Center2 könnte es nicht mehr sauber stoppen, seinen Zustand nicht
+Ein Modul, das sich selbst als Plugin registriert, entzieht sich der MHCenter2-
+Verwaltung: MHCenter2 könnte es nicht mehr sauber stoppen, seinen Zustand nicht
 mehr anzeigen und seine Fehler nicht mehr isolieren. Genau das ist der Sinn des
 Modulsystems.
 
 ## Hauptthread
 
-Center2 ruft `onLoad`, `onEnable`, `onReload` und `onDisable` auf dem Hauptthread
+MHCenter2 ruft `onLoad`, `onEnable`, `onReload` und `onDisable` auf dem Hauptthread
 des Servers auf, genau wie die Command-Registrierung. Für alles Weitere gelten
 die normalen Paper-Regeln: langlaufende Arbeit gehört asynchron, Welt- und
 Spielerzugriffe gehören auf den Hauptthread.
@@ -147,7 +147,7 @@ Zwei Ausnahmen, bei denen du **nicht** auf dem Hauptthread bist:
 * der Listener von `context.network().onAction(...)`,
 * jeder Aufruf von `context.network().storage()`.
 
-Beides läuft im Hintergrund-Thread von Center2. Umgekehrt gilt: rufe den Storage
+Beides läuft im Hintergrund-Thread von MHCenter2. Umgekehrt gilt: rufe den Storage
 **nie** vom Hauptthread aus auf – er blockiert auf einem Datenbankaufruf. Siehe
 [Netzwerk für Module](Development-Network.md).
 

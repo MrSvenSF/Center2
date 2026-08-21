@@ -1,6 +1,6 @@
 # Testbereiche
 
-Dieser Ordner bündelt die Entwicklungs- und Beispielumgebungen von Center2.
+Dieser Ordner bündelt die Entwicklungs- und Beispielumgebungen von MHCenter2.
 
 | Ordner | Veröffentlichung | Zweck |
 |---|---|---|

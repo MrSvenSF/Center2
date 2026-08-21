@@ -9,34 +9,43 @@
 | Velocity | **3.5.x** |
 | Buildsystem (nur zum Selberbauen) | Maven |
 
-Center2 braucht sonst nichts: kein Datenbankserver, kein Redis, kein
+MHCenter2 braucht sonst nichts: kein Datenbankserver, kein Redis, kein
 Permission-Plugin und keine Internetverbindung. Ein Permission-Plugin ist nur
 nötig, wenn Spieler (also nicht die Konsole) Adminfunktionen benutzen sollen.
 
-## Center2 herunterladen
+## MHCenter2 herunterladen
 
-Es gibt genau **eine** JAR für beide Plattformen: `Center2-<version>.jar`.
+Es gibt genau **eine** JAR für beide Plattformen: `MHCenter2-<version>.jar`.
 
 Lade sie aus dem GitHub-Releases-Bereich dieses Repositories herunter. Solange
 dort noch kein Release veröffentlicht ist, baust du sie selbst:
 
 ```bash
-cd Center2
+cd MHCenter2
 mvn clean package
 ```
 
-Ergebnis: `target/Center2-<version>.jar`
+Ergebnis: `target/MHCenter2-<version>.jar`
+
+## Wechsel von der Beta
+
+Die öffentliche Beta verwendete noch den Namen `Center2`. Wer bestehende
+Konfigurationen oder Modulzustände übernehmen möchte, stoppt Paper und Velocity
+und benennt vor dem ersten Start der stabilen Version den Ordner
+`plugins/Center2/` in `plugins/MHCenter2/` um. Danach wird ausschließlich
+`MHCenter2-1.0.0.jar` verwendet; die alte Beta-JAR muss aus `plugins/`
+entfernt bleiben.
 
 ## Paper-Installation
 
 1. Server stoppen.
-2. `Center2-<version>.jar` nach `plugins/` kopieren.
+2. `MHCenter2-<version>.jar` nach `plugins/` kopieren.
 3. Server starten.
 
-Center2 legt beim ersten Start diese Struktur an:
+MHCenter2 legt beim ersten Start diese Struktur an:
 
 ```
-plugins/Center2/
+plugins/MHCenter2/
 ├── MainConfig.yml
 ├── Commands.yml
 ├── Permissions.yml
@@ -57,13 +66,13 @@ plugins/Center2/
 ## Velocity-Installation
 
 1. Proxy stoppen.
-2. **Dieselbe** `Center2-<version>.jar` nach `plugins/` kopieren.
+2. **Dieselbe** `MHCenter2-<version>.jar` nach `plugins/` kopieren.
 3. Proxy starten.
 
 Auf dem Proxy entsteht:
 
 ```
-plugins/Center2/
+plugins/MHCenter2/
 ├── MainConfig.yml
 ├── Language/
 │   ├── DE.yml
@@ -80,17 +89,17 @@ dort weder `Commands.yml` noch `Permissions.yml` noch `Menus/`. Die
 Modulverwaltungscommands gibt es trotzdem, siehe
 [Getting Started](Getting-Started.md).
 
-Der Datenordner heißt auf beiden Seiten `Center2`, obwohl die Velocity-Plugin-ID
-`center2` lauten muss.
+Der Datenordner heißt auf beiden Seiten `MHCenter2`, obwohl die Velocity-Plugin-ID
+`mhcenter2` lauten muss.
 
 ## Gemeinsames Netzwerk
 
-Center2 auf Paper und Center2 auf Velocity reden über Plugin-Messaging auf dem
-Kanal `center2:network` miteinander. Dafür ist nichts zu konfigurieren; es
-funktioniert, sobald beide Seiten Center2 haben und ein Spieler verbunden ist.
+MHCenter2 auf Paper und MHCenter2 auf Velocity reden über Plugin-Messaging auf dem
+Kanal `mhcenter2:network` miteinander. Dafür ist nichts zu konfigurieren; es
+funktioniert, sobald beide Seiten MHCenter2 haben und ein Spieler verbunden ist.
 
-Damit die Netzwerkübersicht im Admin-Menü etwas anzeigt, muss Center2 also auf
-dem Proxy **und** auf den Backend-Servern installiert sein. Center2 funktioniert
+Damit die Netzwerkübersicht im Admin-Menü etwas anzeigt, muss MHCenter2 also auf
+dem Proxy **und** auf den Backend-Servern installiert sein. MHCenter2 funktioniert
 aber auch allein auf einem einzelnen Paper-Server.
 
 ## Erster Start prüfen
@@ -98,44 +107,45 @@ aber auch allein auf einem einzelnen Paper-Server.
 In der Serverkonsole steht bei Erfolg:
 
 ```
-[Center2] Center2 <version> auf Paper aktiviert. Registrierte Commands: 1.
-[Center2] Center2 prüft Module gegen Minecraft 1.21.11.
-[Center2] 0 Module installiert, 0 davon aktiv.
+[MHCenter2] MHCenter2 <version> auf Paper aktiviert. Registrierte Commands: 1.
+[MHCenter2] MHCenter2 prüft Module gegen Minecraft 1.21.11.
+[MHCenter2] 0 Module installiert, 0 davon aktiv.
 ```
 
 Auf dem Proxy:
 
 ```
-[center2]: Center2 <version> auf Velocity aktiviert.
-[center2]: 0 Module installiert, 0 davon aktiv.
+[mhcenter2]: MHCenter2 <version> auf Velocity aktiviert.
+[mhcenter2]: 0 Module installiert, 0 davon aktiv.
 ```
 
 Zusätzlich:
 
 * `/center` in der Konsole zeigt die Commandübersicht.
-* `plugins/Center2/` existiert mit den oben genannten Dateien.
+* `plugins/MHCenter2/` existiert mit den oben genannten Dateien.
 
-Startet Center2 nicht, steht der Grund als konkrete Meldung in der Konsole, siehe
+Startet MHCenter2 nicht, steht der Grund als konkrete Meldung in der Konsole, siehe
 [Troubleshooting](Troubleshooting.md).
 
 ## Update
 
 1. Server stoppen.
-2. Alte `Center2-<alt>.jar` aus `plugins/` löschen, neue hineinlegen.
+2. Alte `MHCenter2-<alt>.jar` aus `plugins/` löschen, neue hineinlegen.
 3. Server starten.
 
-Konfigurationsdateien müssen **nicht** gelöscht werden. Center2 ergänzt fehlende
+Konfigurationsdateien müssen **nicht** gelöscht werden. MHCenter2 ergänzt fehlende
 neue Standardeinträge selbst und lässt bestehende Werte unverändert, siehe
 [Configuration](Configuration.md).
 
-Beim Update von 0.3.0 auf 0.4.0 kommt der Abschnitt `remote` in
-`MainConfig.yml` dazu. Er wird mit `enabled: false` ergänzt: ein Update versucht
-nie von selbst, eine Datenbank zu benutzen, die niemand eingerichtet hat.
+Fehlt in einer älteren `MainConfig.yml` der Abschnitt `remote`, ergänzt MHCenter2
+ihn mit `enabled: false`: Ein Update versucht nie von selbst, eine Datenbank zu
+benutzen, die niemand eingerichtet hat. Beim Wechsel auf 1.0.0 bleiben bereits
+vorhandene Einstellungen erhalten.
 
 ## Optional: die gemeinsame MariaDB
 
-Center2 braucht sie **nicht**. Sie fügt genau eine Sache hinzu: einen
-Center2-Knoten erreichen, auf dem gerade niemand online ist – zum Beispiel für
+MHCenter2 braucht sie **nicht**. Sie fügt genau eine Sache hinzu: einen
+MHCenter2-Knoten erreichen, auf dem gerade niemand online ist – zum Beispiel für
 einen netzwerkweiten `/center reload` auf einen leeren Server.
 
 Kurzfassung:

@@ -1,11 +1,11 @@
 # Sicherheit
 
-Diese Seite sammelt, worauf du beim Betrieb achten solltest – und was Center2
+Diese Seite sammelt, worauf du beim Betrieb achten solltest – und was MHCenter2
 ausdrücklich **nicht** tut.
 
 ## Module sind keine Sandbox
 
-Ein Center2-Modul ist normaler Java-Code im selben Prozess wie der Server. Es hat
+Ein MHCenter2-Modul ist normaler Java-Code im selben Prozess wie der Server. Es hat
 dieselben Möglichkeiten wie jedes andere Plugin: Dateien, Netzwerk, Reflection,
 alles.
 
@@ -20,7 +20,7 @@ mit einem Plugin auch tun würdest.
 
 Das ist die wichtigste Regel des Remote-Systems.
 
-Center2 liest aus der Datenbank **niemals** einen Text und führt ihn als
+MHCenter2 liest aus der Datenbank **niemals** einen Text und führt ihn als
 Konsolenbefehl aus. Es gibt keinen Remote-Console-Kanal, und es wird auch keinen
 geben.
 
@@ -44,7 +44,7 @@ mit Codeausführung auf allen Servern des Netzwerks.
 * Das Passwort steht in `MainConfig.yml`. Diese Datei gehört **nicht** in ein
   öffentliches Repository und nicht in ein Backup, das jeder lesen kann.
 * Setze die Dateirechte so, dass nur der Serverbenutzer die Datei lesen kann.
-* Center2 schreibt das Passwort **nie** ins Log. Auch nicht in eine
+* MHCenter2 schreibt das Passwort **nie** ins Log. Auch nicht in eine
   Fehlermeldung, auch nicht in die JDBC-URL: die URL enthält es gar nicht, das
   Passwort geht getrennt an den Verbindungspool.
 * Eine Meldung über die Datenbank nennt höchstens `host:port/datenbank` und ob
@@ -55,10 +55,10 @@ mit Codeausführung auf allen Servern des Netzwerks.
 Gib dem Benutzer nur, was er braucht, und nur auf dem einen Schema:
 
 ```sql
-GRANT SELECT, INSERT, UPDATE, DELETE ON center2.* TO 'center2'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE ON mhcenter2.* TO 'mhcenter2'@'%';
 ```
 
-`CREATE` braucht Center2 nur beim allerersten Start, um seine fünf Tabellen
+`CREATE` braucht MHCenter2 nur beim allerersten Start, um seine fünf Tabellen
 anzulegen. Danach kannst du es entziehen.
 
 Nicht nötig und nicht erwünscht: `DROP`, `ALTER` auf fremden Schemata, `SUPER`,
@@ -85,7 +85,7 @@ die stehen als Konstanten im Code.
 Der Remote-Storage der Module kann große und sensible Daten enthalten – ein
 serialisiertes Inventar zum Beispiel.
 
-Center2 loggt davon **nichts**. Ins Log kommen höchstens:
+MHCenter2 loggt davon **nichts**. Ins Log kommen höchstens:
 
 * die Modul-ID,
 * der Schlüssel bzw. die Transfer-ID,
@@ -111,10 +111,10 @@ abgelaufene Einträge werden regelmäßig entfernt. Der Storage ist ein
 
 Details unter [Permissions](Permissions.md).
 
-## Was Center2 nicht ist
+## Was MHCenter2 nicht ist
 
 Kein HTTP-Server, keine REST-API, kein WebSocket, kein Dashboard, kein
-Login-Dienst, kein Marketplace, kein Auto-Update. Center2 öffnet keinen Port und
+Login-Dienst, kein Marketplace, kein Auto-Update. MHCenter2 öffnet keinen Port und
 lädt nichts aus dem Internet nach. Die einzigen ausgehenden Verbindungen sind die
 zur optionalen MariaDB.
 

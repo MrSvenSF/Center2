@@ -7,7 +7,7 @@ Modulübersicht, Admin-Menü und Logs zeigen immer denselben Zustand.
 |---------|--------|-----------|
 | `ENABLED` | ja | Das Modul ist gestartet und stellt seine Funktionen bereit. |
 | `DISABLED` | nein | Installiert, aber abgeschaltet. |
-| `INCOMPATIBLE_CENTER` | nein | Unterstützt die laufende Center2-Version nicht. |
+| `INCOMPATIBLE_CENTER` | nein | Unterstützt die laufende MHCenter2-Version nicht. |
 | `INCOMPATIBLE_MINECRAFT` | nein | Unterstützt die laufende Minecraft-Version nicht. |
 | `ERROR` | nein | Beim Laden, Starten oder Stoppen fehlgeschlagen. |
 
@@ -27,7 +27,7 @@ Das Modul ist installiert, läuft aber nicht. Gründe:
 
 * Ein Administrator hat es abgeschaltet (`/center modules disable …` oder der
   Knopf im Menü). Dieser Zustand bleibt über einen Neustart erhalten.
-* Center2 konnte den gespeicherten Modulzustand nicht lesen. Dann startet in
+* MHCenter2 konnte den gespeicherten Modulzustand nicht lesen. Dann startet in
   diesem Durchlauf **kein** Modul automatisch; die Ursache steht in der Konsole.
 
 **Zu tun:** mit `/center modules enable <module-id>` oder dem Knopf **Aktivieren**
@@ -35,18 +35,18 @@ wieder einschalten.
 
 ## INCOMPATIBLE_CENTER
 
-Das Modul unterstützt die laufende Center2-Version nicht. Es bleibt sichtbar,
+Das Modul unterstützt die laufende MHCenter2-Version nicht. Es bleibt sichtbar,
 startet aber nicht und lässt sich auch nicht von Hand aktivieren.
 
 Die Konsole nennt den geforderten Bereich und die laufende Version:
 
 ```
-Modul 'Altes Modul' (ID AltesModul, Version 0.1.0) unterstützt Center2 0.1.0 - 0.1.9,
-hier läuft 0.4.0. Das Modul bleibt deaktiviert.
+Modul 'Altes Modul' (ID AltesModul, Version 0.4.0) unterstützt MHCenter2 0.4.0 - 0.4.9,
+hier läuft 1.0.0. Das Modul bleibt deaktiviert.
 ```
 
-**Zu tun:** eine Modulversion besorgen, die zur installierten Center2-Version
-passt, oder die passende Center2-Version verwenden. Danach Serverneustart.
+**Zu tun:** eine Modulversion besorgen, die zur installierten MHCenter2-Version
+passt, oder die passende MHCenter2-Version verwenden. Danach Serverneustart.
 
 ## INCOMPATIBLE_MINECRAFT
 
@@ -65,7 +65,7 @@ auch dort kann sich die API geändert haben.
 ## ERROR
 
 Das Modul ist grundsätzlich kompatibel, hat aber beim Laden, Starten oder Stoppen
-eine Ausnahme geworfen. Es läuft nicht, und seine Commands sind entfernt. Center2
+eine Ausnahme geworfen. Es läuft nicht, und seine Commands sind entfernt. MHCenter2
 und alle anderen Module laufen normal weiter.
 
 Im Menü steht **ausschließlich**:
@@ -80,7 +80,7 @@ zum Verwalten da, nicht zum Debuggen.
 Die vollständige Ursache steht in der **Serverkonsole**:
 
 ```
-[Center2] Modul 'Broken Test Module' (ID BrokenTestModule, Version 1.0.0)
+[MHCenter2] Modul 'Broken Test Module' (ID BrokenTestModule, Version 1.0.0)
 ist im Schritt ENABLE fehlgeschlagen: IllegalStateException: ...
 java.lang.IllegalStateException: ...
         at ...
@@ -97,7 +97,7 @@ verständliche Überschrift, die Ausnahme und der Stacktrace.
 3. Den Modulautor mit der Logausgabe kontaktieren.
 
 Ein erneutes Aktivieren ist ein kontrollierter neuer Versuch. Schlägt er wieder
-fehl, bleibt es bei `ERROR` und der Fehler wird erneut sauber geloggt. Center2
+fehl, bleibt es bei `ERROR` und der Fehler wird erneut sauber geloggt. MHCenter2
 versucht es nicht endlos.
 
 ## Modulsystem nicht verfügbar
@@ -105,11 +105,11 @@ versucht es nicht endlos.
 Kein Modulzustand, aber eine mögliche Antwort der Commands:
 
 ```
-Das Center2-Modulsystem ist nicht verfügbar. Die Ursache steht in der Serverkonsole.
+Das MHCenter2-Modulsystem ist nicht verfügbar. Die Ursache steht in der Serverkonsole.
 ```
 
 Dann konnte das Modulsystem gar nicht starten. Auf Paper passiert das, wenn
-Center2 die Minecraft-Version des Servers nicht bestimmen kann: ohne bestätigte
+MHCenter2 die Minecraft-Version des Servers nicht bestimmen kann: ohne bestätigte
 Version wird bewusst kein Modul geladen.
 
 Das ist ausdrücklich **nicht** dasselbe wie „kein Modul installiert".

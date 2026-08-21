@@ -1,7 +1,7 @@
 # Modul-Metadaten
 
 Jede Modul-JAR enthält im Wurzelverzeichnis die Datei
-`center-module.properties`. Ohne sie ist die JAR kein Center2-Modul und wird mit
+`center-module.properties`. Ohne sie ist die JAR kein MHCenter2-Modul und wird mit
 einer Meldung übersprungen.
 
 Bei einem Maven-Projekt liegt sie unter
@@ -30,12 +30,12 @@ Abweichung vom Java-Standard für `.properties`-Dateien, der ISO-8859-1 wäre.
 | `author` | immer | wer das Modul geschrieben hat |
 | `main` | immer | vollqualifizierter Name der Hauptklasse |
 | `platform` | immer | `PAPER`, `VELOCITY` oder `BOTH` |
-| `center-min-version` | immer | älteste unterstützte Center2-Version |
-| `center-max-version` | immer | neueste unterstützte Center2-Version |
+| `center-min-version` | immer | älteste unterstützte MHCenter2-Version |
+| `center-max-version` | immer | neueste unterstützte MHCenter2-Version |
 | `minecraft-min-version` | bei `PAPER` und `BOTH` | älteste unterstützte Minecraft-Version |
 | `minecraft-max-version` | bei `PAPER` und `BOTH` | neueste unterstützte Minecraft-Version |
 
-Andere Felder kennt Center2 nicht.
+Andere Felder kennt MHCenter2 nicht.
 
 ## id
 
@@ -120,7 +120,7 @@ minecraft-min-version=1.21.4
 minecraft-max-version=1.21.11
 ```
 
-## Was Center2 beim Lesen prüft
+## Was MHCenter2 beim Lesen prüft
 
 1. Alle Pflichtfelder vorhanden und nicht leer.
 2. `id` erfüllt das erlaubte Zeichenmuster.

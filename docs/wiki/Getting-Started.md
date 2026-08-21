@@ -23,7 +23,7 @@ die Adminberechtigung besitzt. Ohne sie ist er weder sichtbar noch anklickbar.
 Im Admin-Menü findest du:
 
 * **Status** – Version, Plattform, Minecraft-Version und Laufzeit,
-* **Serverstatus** – die Center2-Instanzen im Netzwerk,
+* **Serverstatus** – die MHCenter2-Instanzen im Netzwerk,
 * **Modulreihe** – die installierten Module direkt als eigene Inventarreihe,
 * **Zurück**.
 
@@ -42,19 +42,19 @@ Der Reload ist transaktional: ist irgendetwas ungültig, wird **nichts**
 übernommen und die zuletzt funktionierende Konfiguration bleibt aktiv. Die
 Fehlermeldung nennt Datei, Pfad und Wert.
 
-Danach geht die Anforderung ins **ganze Center2-Netzwerk**: der Proxy und die
-anderen Paper-Server laden ihre Center2-Instanz ebenfalls neu. Center2 meldet dir
+Danach geht die Anforderung ins **ganze MHCenter2-Netzwerk**: der Proxy und die
+anderen Paper-Server laden ihre MHCenter2-Instanz ebenfalls neu. MHCenter2 meldet dir
 pro Knoten, was wirklich passiert ist – und behauptet nie „erfolgreich", wenn es
 keine Bestätigung gibt.
 
 ```
---- Center2 Netzwerk-Reload ---
+--- MHCenter2 Netzwerk-Reload ---
 - lobby: erfolgreich
 - velocity: erfolgreich
 - survival: noch offen
 ```
 
-Neu geladen wird ausschließlich Center2, nicht Paper, nicht Velocity und keine
+Neu geladen wird ausschließlich MHCenter2, nicht Paper, nicht Velocity und keine
 anderen Plugins. Eine ausgetauschte JAR lädt der Reload **nicht** – dafür braucht
 es einen Serverneustart.
 
@@ -72,8 +72,8 @@ nicht umbenennen.
 Listet jedes erkannte Modul mit Name, ID, Version und Zustand:
 
 ```
---- Center2 Module ---
-Center2 TestModule (TestModule) Version 1.0.0-beta.1 - Aktiviert
+--- MHCenter2 Module ---
+MHCenter2 TestModule (TestModule) Version 1.0.0 - Aktiviert
 ```
 
 Die möglichen Zustände erklärt [Modulstatus](Modules-Status.md).
@@ -90,7 +90,7 @@ abgeschaltetes Modul startet nach dem Neustart nicht wieder von allein.
 
 Dasselbe geht über die Knöpfe in der Modul-Detailansicht des Admin-Menüs.
 
-Ein Modul, das nicht zur laufenden Center2- oder Minecraft-Version passt, lässt
+Ein Modul, das nicht zur laufenden MHCenter2- oder Minecraft-Version passt, lässt
 sich **nicht** aktivieren, auch nicht erzwungen. Ein Force-Enable gibt es
 bewusst nicht.
 
