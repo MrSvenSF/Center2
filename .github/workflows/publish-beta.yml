@@ -17,7 +17,7 @@ jobs:
           ref: v1.0.0-beta.1
 
       - name: Set up Java 25
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '25'
@@ -27,15 +27,10 @@ jobs:
       - name: Build and test Center2
         run: mvn --batch-mode --file Center2/pom.xml clean package
 
-      - name: Publish the GitHub prerelease
+      - name: Upload the beta JAR
         env:
           GH_TOKEN: ${{ github.token }}
         run: >
-          gh release create v1.0.0-beta.1
+          gh release upload v1.0.0-beta.1
           Center2/target/Center2-1.0.0-beta.1.jar
           --repo ${{ github.repository }}
-          --title "Center2 1.0.0 Beta 1"
-          --notes-file CHANGELOG.md
-          --prerelease
-          --latest=false
-          --verify-tag
