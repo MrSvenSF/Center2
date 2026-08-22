@@ -1,100 +1,190 @@
-# MHCenter2
+<div align="center">
 
-MHCenter2 ist ein gemeinsamer Minecraft-Server-Core für **Paper 1.21.11** und
-**Velocity 3.5.x**. Dieselbe JAR läuft auf beiden Plattformen und stellt
+# 🧩 MHCenter2
+
+### Gemeinsamer Minecraft-Server-Core für Paper & Velocity
+
+**Eine JAR • Zwei Plattformen • Modulare API • Netzwerkkommunikation**
+
+[![Version](https://img.shields.io/badge/Version-1.0.1-2F81F7?style=for-the-badge)](https://github.com/MrSvenSF/MHCenter2/releases)
+[![Java](https://img.shields.io/badge/Java-25-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/)
+[![Maven](https://img.shields.io/badge/Maven-Build-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)](https://maven.apache.org/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=for-the-badge)](LICENSE)
+
+<br>
+
+[![Wiki](https://img.shields.io/badge/📖_GitHub_Wiki-Dokumentation-2F81F7?style=for-the-badge)](https://github.com/MrSvenSF/MHCenter2/wiki)
+[![Releases](https://img.shields.io/badge/📦_Releases-Downloads-238636?style=for-the-badge)](https://github.com/MrSvenSF/MHCenter2/releases)
+[![Issues](https://img.shields.io/badge/🐛_Issues-Fehler_melden-D73A49?style=for-the-badge)](https://github.com/MrSvenSF/MHCenter2/issues)
+
+</div>
+
+---
+
+## 👋 Was ist MHCenter2?
+
+**MHCenter2** ist ein gemeinsamer Minecraft-Server-Core für
+**Paper 1.21.11** und **Velocity 3.5.x**.
+
+Dieselbe JAR wird auf beiden Plattformen verwendet und stellt unter anderem
 Konfiguration, Administration, Netzwerkkommunikation und eine öffentliche
-Modul-API bereit.
+Java-Modul-API bereit.
 
-> **Aktueller Stand:** 1.0.1 · Java 25 · Maven
+> **Aktueller Stand:** `1.0.1` • Java 25 • Maven
 >
-> **Transparenzhinweis:** MHCenter2 wurde mit Unterstützung künstlicher
-> Intelligenz entwickelt. Architektur, Auswahl, Prüfung, Tests und
-> Veröffentlichung liegen in der Verantwortung des Projektinhabers.
+> 📖 Die vollständige Benutzer- und Entwicklerdokumentation findest du im
+> **[offiziellen MHCenter2-Wiki](https://github.com/MrSvenSF/MHCenter2/wiki)**.
 
-## Funktionen
+> **Transparenzhinweis:**  
+> MHCenter2 wurde mit Unterstützung künstlicher Intelligenz entwickelt.
+> Architektur, Auswahl, Prüfung, Tests und Veröffentlichung liegen in der
+> Verantwortung des Projektinhabers.
 
-- gemeinsame Core-JAR für Paper und Velocity
-- `/center info`, `/center reload` und Modulverwaltung
-- konfigurierbare Commands, Permissions, Menüs sowie deutsche und englische Texte
-- lokale SQLite-Datenhaltung für MHCenter2-Zustände
-- optionale MariaDB für zuverlässige netzwerkweite Aktionen und kurzlebige
-  gemeinsame Moduldaten – auch ohne Spieler
-- Plugin Messaging als Fallback für Netzwerk-Reloads und Modul-Actions
-- externe Module für `PAPER`, `VELOCITY` oder `BOTH`
-- Versionsprüfung für MHCenter2 und bei Paper zusätzlich für Minecraft
-- transaktionale Reloads und automatische Config-Migrationen
+---
 
-MHCenter2 ist kein Webdienst und stellt keine REST- oder HTTP-API bereit. Mit
-„API“ ist die Java-Schnittstelle gemeint, gegen die externe MHCenter2-Module
-gebaut werden.
+## ✨ Funktionen
 
-## Installation
+- 🔗 gemeinsame Core-JAR für **Paper und Velocity**
+- ⌨️ `/center info`, `/center reload` und Modulverwaltung
+- 🔐 konfigurierbare Commands und Permissions
+- 🖥️ Info- und Admin-Menüs auf Paper
+- 🌍 deutsche und englische Texte
+- 🗄️ lokale SQLite-Datenhaltung
+- 🌐 optionale MariaDB für netzwerkweite Kommunikation
+- 📡 Plugin Messaging als Fallback
+- 🧩 Module für `PAPER`, `VELOCITY` oder `BOTH`
+- 🔄 transaktionale Reloads
+- 🛠️ automatische Config-Migrationen
+- ✅ Versions- und Kompatibilitätsprüfung
+- ☕ öffentliche Java-Modul-API
+- 🧪 umfangreiche automatisierte Tests
 
-Voraussetzungen:
+MHCenter2 ist **kein Webdienst**.
 
-- Java 25
-- Paper 1.21.11 und/oder Velocity 3.5.x
-- optional eine gemeinsame MariaDB
+Es gibt keinen integrierten HTTP-Server, keine REST-API und keinen
+WebSocket-Dienst.
 
-Installation auf Paper und Velocity:
+Mit „API“ ist ausschließlich die Java-Schnittstelle für externe
+MHCenter2-Module gemeint.
 
-1. `MHCenter2-1.0.1.jar` in den jeweiligen Ordner `plugins/` legen.
-2. Server beziehungsweise Proxy einmal starten.
-3. Die erzeugte Konfiguration unter `plugins/MHCenter2/` prüfen.
-4. Nach Änderungen `/center reload` verwenden oder die Instanz neu starten.
+---
 
-Beim Update von `1.0.0-beta.1` zuerst Server und Proxy stoppen, die alte
-Beta-JAR entfernen und den vorhandenen Ordner `plugins/Center2/` in
-`plugins/MHCenter2/` umbenennen. Dadurch bleiben Konfigurationen,
-Modulzustände und lokale SQLite-Daten erhalten.
+## 📖 Dokumentation
 
-Die MariaDB ist standardmäßig deaktiviert. Ohne sie funktionieren alle lokalen
-Core-Funktionen weiter. Netzwerkfunktionen verwenden dann Plugin Messaging und
-benötigen dafür eine Spielerverbindung.
+Die vollständige Dokumentation befindet sich im GitHub-Wiki:
 
-## Netzwerk und Datenbanken
+### 👉 [MHCenter2 Wiki öffnen](https://github.com/MrSvenSF/MHCenter2/wiki)
 
-MHCenter2 trennt lokale und gemeinsame Daten bewusst:
+Dort findest du unter anderem:
+
+- 🚀 Installation und erste Schritte
+- ⚙️ Konfiguration
+- 🔐 Permissions
+- 🌐 Netzwerk und MariaDB
+- 🔄 Netzwerk-Reload
+- 🧩 Module
+- ☕ Modulentwicklung und Java-API
+- 🧪 Teststand
+- 🔒 Sicherheit
+- 🛠️ Troubleshooting
+- ❓ FAQ
+
+Die Markdown-Quellen bleiben zusätzlich unter
+[`docs/wiki/`](docs/wiki/) im Repository erhalten.
+
+So bleibt die Dokumentation gemeinsam mit dem Sourcecode versioniert,
+während das GitHub-Wiki eine übersichtliche Oberfläche zum Lesen bietet.
+
+---
+
+## 🚀 Installation
+
+### Voraussetzungen
+
+- **Java 25**
+- **Paper 1.21.11** und/oder **Velocity 3.5.x**
+- optional eine gemeinsame **MariaDB**
+
+### Installation
+
+1. Lade die aktuelle MHCenter2-JAR aus den
+   [Releases](https://github.com/MrSvenSF/MHCenter2/releases) herunter.
+2. Lege dieselbe JAR in den jeweiligen `plugins/`-Ordner.
+3. Starte Paper beziehungsweise Velocity einmal.
+4. Prüfe die erzeugte Konfiguration unter `plugins/MHCenter2/`.
+5. Verwende nach Änderungen `/center reload` oder starte die Instanz neu.
+
+📖 **Ausführliche Anleitung:**  
+[Installation im Wiki](https://github.com/MrSvenSF/MHCenter2/wiki/Installation)
+
+### Update von `1.0.0-beta.1`
+
+Server und Proxy zuerst stoppen.
+
+Anschließend die alte Beta-JAR entfernen und:
+
+```text
+plugins/Center2/
+```
+
+in:
+
+```text
+plugins/MHCenter2/
+```
+
+umbenennen.
+
+Dadurch bleiben Konfigurationen, Modulzustände und lokale SQLite-Daten erhalten.
+
+---
+
+## 🌐 Netzwerk & Datenbanken
+
+MHCenter2 trennt lokale und gemeinsame Daten bewusst voneinander.
 
 | Bereich | Technik | Zweck |
 |---|---|---|
-| lokaler Zustand | SQLite | MHCenter2-Metadaten und Aktivierungszustände der Module |
-| zuverlässige gemeinsame Daten | optionale MariaDB | Heartbeats, Actions, Quittungen und kurzlebiger Modul-Storage |
-| Fallback-Kommunikation | Plugin Messaging | Reloads und Modul-Actions über Spielerverbindungen |
+| 🗄️ Lokaler Zustand | SQLite | MHCenter2-Metadaten und Modulzustände |
+| 🌐 Gemeinsame Daten | optionale MariaDB | Heartbeats, Actions, Quittungen und kurzlebiger Storage |
+| 📡 Fallback | Plugin Messaging | Reloads und Modul-Actions über Spielerverbindungen |
 
-SQLite wird niemals als scheinbar gemeinsamer Speicher benutzt. Besonders
-Inventare oder andere Übergabedaten werden dadurch nicht unbemerkt nur auf einem
-einzelnen Server abgelegt.
+### 🗄️ SQLite
 
-Modul-Actions verwenden bevorzugt MariaDB. Ist sie nicht verfügbar, nutzt
-MHCenter2 Plugin Messaging. Wartet ein Zielserver noch auf eine Spielerverbindung,
-hält Velocity die Action bis zum Join oder bis zum Ablauf ihrer Laufzeit im
-Arbeitsspeicher. MariaDB bleibt für garantierte Zustellung ohne Spieler und für
-atomaren gemeinsamen Storage der zuverlässige Weg.
+Jede MHCenter2-Instanz besitzt ihre eigene lokale SQLite-Datenbank.
 
-## Teststand der Version-1.0-Reihe
+SQLite wird **niemals als scheinbar gemeinsamer Netzwerk-Speicher verwendet**.
 
-Der funktional identische Stand 1.0.0 wurde im lokalen Testnetz mit Velocity
-und zwei Paper-Servern praktisch geprüft. Menüs, Commands, Permissions,
-Modul-Lebenszyklus, Serverwechsel,
-Plugin-Messaging für Modul-Actions und der netzwerkweite Reload funktionieren
-ohne aktivierte MariaDB.
+### 📡 Plugin Messaging
 
-Zusätzlich wurde MHCenter2 gegen eine echte MariaDB-11.8-Instanz in Docker
-getestet. Alle drei Knoten verbanden sich gleichzeitig mit der Datenbank. Der
-netzwerkweite Reload war mit und ohne Spieler auf Paper, Paper2 und Velocity
-erfolgreich. Eine Modul-Action wurde ohne Spieler von Paper zu Paper2
-zugestellt; der gemeinsame Modul-Storage übergab dieselben Daten per
-`put()`/`take()` nachweislich genau einmal.
+Plugin Messaging ist der normale direkte Kommunikationsweg zwischen
+Paper und Velocity.
 
-Version 1.0.1 ändert ausschließlich Versionierung, Dokumentation und die in der
-JAR mitgelieferten Lizenztexte. Für 1.0.1 wurden der vollständige Core-Build
-und alle automatisierten Tests erneut ausgeführt.
+Für die Übertragung zwischen beiden Plattformen wird eine Spielerverbindung
+benötigt.
 
-MariaDB bleibt optional. Ohne sie gelten weiterhin die oben beschriebenen
-Grenzen des Plugin-Messaging-Fallbacks.
+### 🌐 MariaDB
 
-## Commands und Permissions
+Die MariaDB ist **optional** und standardmäßig deaktiviert.
+
+Mit aktivierter MariaDB sind unter anderem möglich:
+
+- Heartbeats aller MHCenter2-Knoten
+- Kommunikation ohne Spieler
+- zuverlässige Modul-Actions
+- Quittungen
+- kurzlebiger gemeinsamer Modul-Storage
+- atomare Datenübergaben
+
+Fällt MariaDB aus, funktionieren lokale Core-Funktionen weiterhin.
+
+📖 [Mehr zum Netzwerk und zur MariaDB](https://github.com/MrSvenSF/MHCenter2/wiki/Network-Remote)
+
+---
+
+## ⌨️ Commands
+
+Die wichtigsten Standard-Commands:
 
 ```text
 /center info
@@ -105,11 +195,28 @@ Grenzen des Plugin-Messaging-Fallbacks.
 /center modules disable <modul-id>
 ```
 
-Command-Pfade und Aliase sind weitgehend über `Commands.yml` konfigurierbar.
-Administrative Zugriffe werden zentral über `Permissions.yml` geprüft. Die
-Master-Permission lautet `center.admin.*`.
+Command-Pfade und Aliase können weitgehend über `Commands.yml`
+konfiguriert werden.
 
-## Module
+---
+
+## 🔐 Permissions
+
+Administrative Zugriffe werden zentral über `Permissions.yml` geprüft.
+
+Die Master-Permission lautet:
+
+```text
+center.admin.*
+```
+
+MHCenter2 besitzt ein bewusstes Permission-Gate für administrative Aktionen.
+
+📖 [Permissions im Wiki](https://github.com/MrSvenSF/MHCenter2/wiki/Permissions)
+
+---
+
+## 🧩 Module
 
 Modul-JARs werden hier abgelegt:
 
@@ -117,101 +224,280 @@ Modul-JARs werden hier abgelegt:
 plugins/MHCenter2/Modules/Jars/
 ```
 
-Ihre Konfigurationen liegen getrennt unter:
+Die Konfiguration eines Moduls liegt unter:
 
 ```text
 plugins/MHCenter2/Modules/Configs/<modul-id>/
 ```
 
-Ein Modul deklariert seine eindeutige ID, Version, Plattform und kompatiblen
-MHCenter2-Versionen; auf Paper zusätzlich die kompatiblen Minecraft-Versionen.
-Passt eine Version nicht, wird es kontrolliert blockiert. Gleiche Mindest- und
-Höchstversion binden ein Modul exakt an eine Version.
+### Plattformen
 
-Der Lebenszyklus besteht aus `onLoad`, `onEnable`, `onReload` und `onDisable`.
-Die offiziell unterstützte Java-API liegt ausschließlich in:
+Ein Modul kann für folgende Plattformen entwickelt werden:
+
+```text
+PAPER
+VELOCITY
+BOTH
+```
+
+Module deklarieren unter anderem:
+
+- eindeutige Modul-ID
+- Modulversion
+- Zielplattform
+- kompatible MHCenter2-Versionen
+- auf Paper zusätzlich kompatible Minecraft-Versionen
+
+Nicht kompatible Module werden kontrolliert blockiert.
+
+---
+
+## 🔄 Modul-Lifecycle
+
+Der unterstützte Lifecycle besteht aus:
+
+```text
+onLoad()
+onEnable()
+onReload()
+onDisable()
+```
+
+`onReload()` dient dem Reload von Konfiguration und Laufzeitzustand.
+
+Es handelt sich **nicht** um einen automatischen Austausch einer bereits
+geladenen Modul-JAR.
+
+---
+
+## ☕ Java-Modul-API
+
+Die offiziell unterstützte API liegt ausschließlich in:
 
 ```text
 net.managerhub.center.api
 net.managerhub.center.api.velocity
 ```
 
-Module sind keine Sandbox. Sie laufen als normaler Java-Code im Serverprozess
-und sollten nur aus vertrauenswürdigen Quellen installiert werden.
+Module können unter anderem:
 
-## Projektstruktur
+- eigene Commands registrieren
+- eigene Konfigurationsordner verwenden
+- Cleanup-Ressourcen registrieren
+- Netzwerk-Actions senden und empfangen
+- Remote-Storage verwenden
+- auf Velocity Proxy-Funktionen nutzen
+
+📖 **Entwicklerdokumentation:**  
+[Modulentwicklung](https://github.com/MrSvenSF/MHCenter2/wiki/Development)
+
+📖 **API-Referenz:**  
+[Development API](https://github.com/MrSvenSF/MHCenter2/wiki/Development-API)
+
+---
+
+## ⚠️ Sicherheit bei Modulen
+
+MHCenter2-Module sind **keine Sandbox**.
+
+Ein Modul ist normaler Java-Code und läuft im selben Prozess wie Paper oder
+Velocity.
+
+Installiere externe Module deshalb nur aus Quellen, denen du vertraust.
+
+📖 [Sicherheitsdokumentation](https://github.com/MrSvenSF/MHCenter2/wiki/Security)
+
+---
+
+## 🧪 Tests
+
+Der aktuelle Core-Build umfasst **356 automatisierte Tests**.
+
+Getestet werden unter anderem:
+
+- Commands und Aliase
+- Permissions
+- Konfiguration und Migrationen
+- Reload-Verhalten
+- Modul-Metadaten
+- Modul-Lifecycle
+- SQLite-Zustände
+- Netzwerkprotokoll
+- Remote-Actions
+- Heartbeats
+- Quittungen
+- MariaDB-Storage
+- Paper-Modul-API
+- Velocity-Modul-API
+
+Zusätzlich wurde MHCenter2 praktisch in einem lokalen Netzwerk getestet:
+
+```text
+Velocity
+   │
+   ├── Paper
+   │
+   └── Paper2
+```
+
+Der funktional identische Stand `1.0.0` wurde außerdem gegen eine echte
+**MariaDB-11.8-Instanz in Docker** getestet.
+
+Dabei wurden unter anderem erfolgreich geprüft:
+
+- Verbindung aller drei Knoten
+- Netzwerk-Reload mit Spieler
+- Netzwerk-Reload ohne Spieler
+- Modul-Action Paper → Paper2 ohne Spieler
+- Remote-Storage mit `put()` und atomarem `take()`
+- einmalige Verarbeitung übertragener Daten
+
+Version `1.0.1` enthält gegenüber diesem Laufzeitstand keine
+Funktionsänderungen.
+
+Für `1.0.1` wurden der Core vollständig neu gebaut und alle automatisierten
+Tests erneut ausgeführt.
+
+📖 [Vollständiger Teststand](https://github.com/MrSvenSF/MHCenter2/wiki/Testing)
+
+---
+
+## 📁 Projektstruktur
 
 | Pfad | Inhalt |
 |---|---|
 | `MHCenter2/` | Core für Paper und Velocity |
 | `testing/PaperTestModule/` | Paper-Beispielmodul |
 | `testing/VelocityTestModule/` | Velocity-Beispielmodul |
-| `docs/wiki/` | versionierte Quellen der GitHub-Wiki |
+| `docs/wiki/` | versionierte Wiki-Dokumentation |
+| `README.md` | Projektübersicht |
+| `CHANGELOG.md` | Versionshistorie |
+| `CONTRIBUTING.md` | Hinweise für Beiträge |
+| `SECURITY.md` | Sicherheitsrichtlinie |
+| `LICENSE` | Apache License 2.0 |
+| `THIRD-PARTY-NOTICES.md` | Drittanbieter-Lizenzen |
 
-Lokale Minecraft-Testserver, Serverdaten, Secrets, IDE-Dateien, Maven-Ausgaben,
-fertige JARs und KI-Arbeitsdateien werden nicht veröffentlicht.
+Lokale Minecraft-Testserver, Welten, Zugangsdaten, IDE-Dateien,
+Maven-Ausgaben, fertige lokale JARs und Arbeitsdateien werden nicht
+veröffentlicht.
 
-## Selbst bauen
+---
 
-Alle drei Bestandteile sind eigenständige Maven-Projekte:
+## 🔨 Selbst bauen
+
+MHCenter2 verwendet **Maven**.
+
+### Core
 
 ```bash
 cd MHCenter2
 mvn clean install
+```
 
-cd ../testing/PaperTestModule
-mvn clean package
+Die fertige JAR befindet sich anschließend unter:
 
-cd ../VelocityTestModule
+```text
+MHCenter2/target/MHCenter2-1.0.1.jar
+```
+
+### Paper-Testmodul
+
+```bash
+cd testing/PaperTestModule
 mvn clean package
 ```
 
-Die Core-JAR entsteht unter `MHCenter2/target/MHCenter2-1.0.1.jar`. Paper- und
-Velocity-API werden nur zum Kompilieren verwendet; SQLite- und MariaDB-Treiber
-werden in die fertige Core-JAR eingebunden.
+### Velocity-Testmodul
 
-Der aktuelle Stand wurde mit einem sauberen Maven-Build und **356 automatischen
-Tests** geprüft. Beide Beispielmodule bauen ebenfalls erfolgreich.
+```bash
+cd testing/VelocityTestModule
+mvn clean package
+```
 
-## Dokumentation
+Paper- und Velocity-API werden nur zum Kompilieren verwendet und nicht in die
+Core-JAR eingebettet.
 
-Die vollständige Dokumentation ist kostenlos direkt im Repository lesbar:
+Die JDBC-Treiber für SQLite und MariaDB werden dagegen in die veröffentlichte
+Core-JAR integriert.
 
-- [Changelog](CHANGELOG.md)
-- [Dokumentationsübersicht](docs/wiki/README.md)
-- [Installation](docs/wiki/Installation.md) und
-  [erste Schritte](docs/wiki/Getting-Started.md)
-- [Konfiguration](docs/wiki/Configuration.md),
-  [Permissions](docs/wiki/Permissions.md) und
-  [Netzwerk-Reload](docs/wiki/Network-Reload.md)
-- [Teststand](docs/wiki/Testing.md)
-- [optionale MariaDB](docs/wiki/Network-Remote.md) und
-  [Sicherheit](docs/wiki/Security.md)
-- [Modulentwicklung](docs/wiki/Development.md),
-  [API-Referenz](docs/wiki/Development-API.md) und
-  [Versionsregeln](docs/wiki/Development-Versioning.md)
-- [Troubleshooting](docs/wiki/Troubleshooting.md) und [FAQ](docs/wiki/FAQ.md)
+---
 
-Damit bleiben Dokumentation und Code gemeinsam versioniert und benötigen keinen
-kostenpflichtigen GitHub-Wiki-Reiter.
+## 🤝 Mitwirken
 
-## Support
+Beiträge, Fehlermeldungen und Verbesserungsvorschläge sind willkommen.
 
-- **Issues:** reproduzierbare Fehler und konkrete Aufgaben
-- **Discussions:** Fragen und Austausch, sobald im Repository aktiviert
-- **Dokumentation:** Installation, Bedienung und Entwicklung unter `docs/wiki/`
+Bitte lies vor größeren Änderungen:
 
-Bitte veröffentliche in Issues oder Logs niemals Datenbankpasswörter,
-Zugangsdaten, Inventarinhalte oder andere sensible Serverdaten.
+👉 [CONTRIBUTING.md](CONTRIBUTING.md)
 
-## Lizenz
+Fehler und konkrete Aufgaben können über GitHub Issues gemeldet werden:
 
-Copyright 2026 Manager Hub. MHCenter2 ist unter der
-[Apache License 2.0](LICENSE) veröffentlicht.
+👉 [GitHub Issues](https://github.com/MrSvenSF/MHCenter2/issues)
 
-Die veröffentlichte JAR enthält außerdem SQLite JDBC (Apache-2.0 und
-BSD-2-Clause-Bestandteile) sowie MariaDB Connector/J
-(LGPL-2.1-or-later). Diese Bibliotheken behalten ihre eigenen Lizenzen. Die
-vollständigen Texte, Versionsangaben und Quellcodeverweise stehen in den
-[Drittanbieterhinweisen](THIRD-PARTY-NOTICES.md) und zusätzlich direkt unter
-`META-INF/` in der JAR.
+Bei größeren Änderungen oder neuen API-Ideen sollte möglichst zuerst ein Issue
+erstellt werden.
+
+---
+
+## 🔐 Sicherheitslücken melden
+
+Sicherheitsrelevante Probleme sollten nicht mit vollständigen Details als
+öffentliches Issue veröffentlicht werden.
+
+Weitere Informationen:
+
+👉 [SECURITY.md](SECURITY.md)
+
+---
+
+## 📋 Changelog
+
+Alle Änderungen zwischen den Versionen findest du hier:
+
+👉 [CHANGELOG.md](CHANGELOG.md)
+
+---
+
+## 📄 Lizenz
+
+MHCenter2 wird unter der **Apache License 2.0** veröffentlicht.
+
+Copyright 2026 Manager Hub.
+
+👉 [LICENSE](LICENSE)
+
+Die veröffentlichte JAR enthält zusätzlich:
+
+### Xerial SQLite JDBC `3.46.1.3`
+
+- Apache License 2.0
+- BSD-2-Clause-Bestandteile
+
+### MariaDB Connector/J `3.5.6`
+
+- LGPL-2.1-or-later
+
+Diese Drittanbieterkomponenten behalten ihre jeweiligen eigenen Lizenzen.
+
+Weitere Informationen, Lizenztexte und Quellcodeverweise:
+
+👉 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)
+
+Die relevanten Lizenzinformationen werden zusätzlich direkt in der
+veröffentlichten JAR unter `META-INF/` mitgeliefert.
+
+---
+
+<div align="center">
+
+## 🧩 MHCenter2
+
+**Paper • Velocity • Java 25 • Maven**
+
+<br>
+
+[![Wiki](https://img.shields.io/badge/📖_Wiki-Dokumentation-2F81F7?style=flat-square)](https://github.com/MrSvenSF/MHCenter2/wiki)
+[![Release](https://img.shields.io/badge/📦_Release-1.0.1-238636?style=flat-square)](https://github.com/MrSvenSF/MHCenter2/releases)
+[![Issues](https://img.shields.io/badge/🐛_Issues-GitHub-D73A49?style=flat-square)](https://github.com/MrSvenSF/MHCenter2/issues)
+
+</div>
